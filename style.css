@@ -867,6 +867,10 @@ footer {
      .home-page-frame17 img {
          margin-bottom: 10px;
      }
+  .home-page-linkedin {
+    margin-left: 0; /* Reset margin */
+    padding-left: 0; /* Reset padding */
+}
 }
 
 @media screen and (max-width: 480px) {
