@@ -858,7 +858,22 @@ footer {
     }
 
     .home-page-frame17 {
-   border: 2px solid red;
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center; /* Vertically center the logos */
+  gap: 40px; /* Add 40px spacing between logos */
+  position: absolute; /* Position the container absolutely */
+  top: 20px; /* Adjust top spacing as needed */
+  right: 20px; /* Adjust right spacing as needed */
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+.home-page-linkedin,
+.home-page-instagram,
+.home-page-github {
+  width: 40px; /* Adjust logo size as needed */
+  height: 40px; /* Adjust logo size as needed */
+  cursor: pointer; /* Add pointer cursor for clickable logos */
 }
 
      .home-page-frame17 img {
