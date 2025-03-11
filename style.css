@@ -858,9 +858,11 @@ footer {
     }
 
     .home-page-frame17 {
-         flex-direction: column;
-         align-items: center;
-     }
+    display: flex;
+    justify-content: center; /* Center the icons horizontally */
+    align-items: center; /* Center the icons vertically */
+    gap: 16px; /* Add spacing between icons */
+}
  
      .home-page-frame17 img {
          margin-bottom: 10px;
