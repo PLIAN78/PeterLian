@@ -546,7 +546,28 @@
   text-transform: none;
   text-decoration: none;
 }
- 
+ .home-page-frame17 {
+  display: flex;
+  justify-content: center; /* Centers icons horizontally */
+  align-items: center; /* Centers icons vertically */
+  gap: 20px; /* Creates equal spacing between icons */
+}
+.home-page-linkedin{
+   width: 32px; /* Use the same width for all icons */
+  height: 32px; /* Use the same height for all icons */
+  display: inline-block; /* Makes sure they display in line */
+}
+.home-page-instagram{
+   width: 32px; /* Use the same width for all icons */
+  height: 32px; /* Use the same height for all icons */
+  display: inline-block; /* Makes sure they display in line */
+}
+.home-page-github {
+  width: 32px; /* Use the same width for all icons */
+  height: 32px; /* Use the same height for all icons */
+  display: inline-block; /* Makes sure they display in line */
+}
+
 @media(max-width: 991px) {
   .thq-grid-4 {
     grid-template-columns: 1fr 1fr 1fr;
