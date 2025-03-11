@@ -732,3 +732,156 @@ footer {
         font-size: 0.9rem;
     }
 }
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Responsive Typography */
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.8rem;
+}
+p {
+    font-size: 1rem;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Mobile Navigation */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Responsive Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+/* Responsive Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive Buttons */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    button {
+        width: 100%;
+    }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+    p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Additional Media Queries for Your Layout */
+@media screen and (max-width: 768px) {
+    .home-page-frame16 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home-page-frame16 > div {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .home-page-text10 {
+        font-size: 1.5rem;
+    }
+
+    .home-page-text14 {
+        font-size: 0.9rem;
+    }
+
+    .home-page-frame17 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home-page-frame17 img {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .home-page-text10 {
+        font-size: 1.2rem;
+    }
+
+    .home-page-text14 {
+        font-size: 0.8rem;
+    }
+
+    .home-page-frame16 > div {
+        margin-bottom: 15px;
+    }
+
+    .home-page-frame17 img {
+        width: 30px;
+        height: 30px;
+    }
+}
