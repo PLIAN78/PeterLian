@@ -859,18 +859,26 @@ footer {
 
     .home-page-frame17 {
     display: flex;
-    justify-content: center; /* Center the icons horizontally */
-    align-items: center; /* Center the icons vertically */
-    gap: 16px; /* Add spacing between icons */
+    justify-content: flex-start; /* Align icons to the left */
+    align-items: center; /* Center icons vertically */
+    gap: 16px; /* Consistent spacing between icons */
+}
+
+.home-page-linkedin {
+    order: 1; /* LinkedIn comes first */
+}
+
+.home-page-instagram {
+    order: 2; /* Instagram comes second */
+}
+
+.home-page-github {
+    order: 3; /* GitHub comes third */
 }
  
      .home-page-frame17 img {
          margin-bottom: 10px;
      }
-  .home-page-linkedin {
-    margin-left: 0; /* Reset margin */
-    padding-left: 0; /* Reset padding */
-}
 }
 
 @media screen and (max-width: 480px) {
