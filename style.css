@@ -547,18 +547,20 @@
   text-decoration: none;
 }
 
-.social-icons-container {
-  display: inline-block; /* Make the container inline */
-  vertical-align: middle; /* Align vertically with other inline elements */
+.social-icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 15px;
 }
-/* LinkedIn icon */
-.home-page-linkedin {
-  display: inline-block; /* Make the LinkedIn icon inline */
-  horizontal: middle; /* Align vertically with other inline elements */
-  width: 29px; /* Set the width of the icon */
-  height: 29px; /* Set the height of the icon */
-  margin-left: 18px; /* Add space between LinkedIn and the other icons */
+
+.social-icons a img {
+  width: 30px; /* Adjust size as needed */
+  height: auto;
 }
+
+
 
 /* Instagram and GitHub icons */
 .home-page-instagram
@@ -573,6 +575,14 @@
   height: 29px; /* Set the height of the icons */
   display: inline-block; /* Ensure the icons are displayed inline */
   margin-right: 18px; /* Add space between the icons */
+}
+/* LinkedIn icon */
+.home-page-linkedin {
+  display: inline-block; /* Make the LinkedIn icon inline */
+  horizontal: middle; /* Align vertically with other inline elements */
+  width: 29px; /* Set the width of the icon */
+  height: 29px; /* Set the height of the icon */
+  margin-left: 18px; /* Add space between LinkedIn and the other icons */
 }
 @media(max-width: 991px) {
   .thq-grid-4 {
