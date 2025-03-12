@@ -554,24 +554,6 @@
   gap: 18px;
 }
 
-.home-page-linkedin {
-  width: 29px;
-  height: 29px;
-  display: inline-block;
-}
-
-.home-page-instagram {
-  width: 29px;
-  height: 29px;
-  display: inline-block;
-}
-
-.home-page-github {
-  width: 29px;
-  height: 29px;
-  display: inline-block;
-}
-
 @media(max-width: 991px) {
   .thq-grid-4 {
     grid-template-columns: 1fr 1fr 1fr;
