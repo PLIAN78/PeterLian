@@ -1,35 +1,35 @@
 :root {
-  --dl-size-size-large: 144px;
-  --dl-size-size-small: 48px;
-  --dl-size-size-medium: 96px;
-  --dl-size-size-xlarge: 192px;
-  --dl-size-size-xsmall: 16px;
-  --dl-space-space-unit: 16px;
-  --dl-size-size-xxlarge: 288px;
-  --dl-size-size-maxwidth: 1400px;
+  --dl-size-size-large: 130px;
+  --dl-size-size-small: 43px;
+  --dl-size-size-medium: 86px;
+  --dl-size-size-xlarge: 173px;
+  --dl-size-size-xsmall: 14px;
+  --dl-space-space-unit: 14px;
+  --dl-size-size-xxlarge: 259px;
+  --dl-size-size-maxwidth: 1260px;
   --dl-color-theme-accent1: #FFFFFF;
   --dl-color-theme-accent2: #F5D1B0;
   --dl-radius-radius-round: 50%;
   --dl-color-theme-primary1: #BF4408;
   --dl-color-theme-primary2: #E65103;
-  --dl-space-space-halfunit: 8px;
-  --dl-space-space-sixunits: 96px;
-  --dl-space-space-twounits: 32px;
+  --dl-space-space-halfunit: 7px;
+  --dl-space-space-sixunits: 86px;
+  --dl-space-space-twounits: 29px;
   --dl-radius-radius-radius2: 2px;
   --dl-radius-radius-radius4: 4px;
-  --dl-radius-radius-radius8: 8px;
-  --dl-space-space-fiveunits: 80px;
-  --dl-space-space-fourunits: 64px;
+  --dl-radius-radius-radius8: 7px;
+  --dl-space-space-fiveunits: 72px;
+  --dl-space-space-fourunits: 58px;
   --dl-color-theme-secondary1: #FFFFFF;
   --dl-color-theme-secondary2: #FBF1EB;
-  --dl-space-space-threeunits: 48px;
+  --dl-space-space-threeunits: 43px;
   --dl-color-theme-neutral-dark: #191818;
-  --dl-radius-radius-cardradius: 8px;
+  --dl-radius-radius-cardradius: 7px;
   --dl-color-theme-neutral-light: #FBFAF9;
-  --dl-radius-radius-imageradius: 8px;
-  --dl-radius-radius-inputradius: 24px;
-  --dl-radius-radius-buttonradius: 24px;
-  --dl-space-space-oneandhalfunits: 24px;
+  --dl-radius-radius-imageradius: 7px;
+  --dl-radius-radius-inputradius: 22px;
+  --dl-radius-radius-buttonradius: 22px;
+  --dl-space-space-oneandhalfunits: 22px;
 }
  
 .button {
@@ -180,41 +180,41 @@
 }
  
 .thq-heading-1 {
-  font-size: 48px;
+  font-size: 43px;
   font-family: STIX Two Text;
   font-weight: 700;
   line-height: 1.5;
 }
  
 .thq-heading-2 {
-  font-size: 35px;
+  font-size: 32px;
   font-family: STIX Two Text;
   font-weight: 600;
   line-height: 1.5;
 }
  
 .thq-heading-3 {
-  font-size: 26px;
+  font-size: 23px;
   font-family: STIX Two Text;
   font-weight: 600;
   line-height: 1.5;
 }
  
 .thq-body-large {
-  font-size: 18px;
-  font-family: Noto Sans;
-  line-height: 1.5;
-}
- 
-.thq-body-small {
   font-size: 16px;
   font-family: Noto Sans;
   line-height: 1.5;
 }
  
+.thq-body-small {
+  font-size: 14px;
+  font-family: Noto Sans;
+  line-height: 1.5;
+}
+ 
 .thq-team-image-round {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -353,8 +353,8 @@
 }
  
 .thq-icon-small {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 }
  
 .thq-button-icon {
@@ -539,33 +539,37 @@
 }
  
 .Content {
-  font-size: 16px;
+  font-size: 14px;
   font-family: Inter;
   font-weight: 400;
   line-height: 1.15;
   text-transform: none;
   text-decoration: none;
 }
- .home-page-frame17 {
+
+.home-page-frame17 {
   display: flex;
-  justify-content: center; /* Centers icons horizontally */
-  align-items: center; /* Centers icons vertically */
-  gap: 20px; /* Creates equal spacing between icons */
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
 }
-.home-page-linkedin{
-   width: 32px; /* Use the same width for all icons */
-  height: 32px; /* Use the same height for all icons */
-  display: inline-block; /* Makes sure they display in line */
+
+.home-page-linkedin {
+  width: 29px;
+  height: 29px;
+  display: inline-block;
 }
-.home-page-instagram{
-   width: 32px; /* Use the same width for all icons */
-  height: 32px; /* Use the same height for all icons */
-  display: inline-block; /* Makes sure they display in line */
+
+.home-page-instagram {
+  width: 29px;
+  height: 29px;
+  display: inline-block;
 }
+
 .home-page-github {
-  width: 32px; /* Use the same width for all icons */
-  height: 32px; /* Use the same height for all icons */
-  display: inline-block; /* Makes sure they display in line */
+  width: 29px;
+  height: 29px;
+  display: inline-block;
 }
 
 @media(max-width: 991px) {
@@ -649,107 +653,108 @@
     grid-template-columns: 1fr;
   }
 }
+
 /* Base Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    max-width: 1600px;
-    overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 1440px;
+  overflow-x: hidden;
 }
 
 .container {
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
+  width: 80%;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 /* Responsive Typography */
 h1 {
-    font-size: 2rem;
+  font-size: 1.8rem;
 }
 h2 {
-    font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 p {
-    font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 /* Navigation */
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem;
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
+  list-style: none;
+  display: flex;
+  gap: 0.9rem;
 }
 
 nav ul li {
-    display: inline;
+  display: inline;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: #333;
+  text-decoration: none;
+  color: #333;
 }
 
 /* Mobile Navigation */
 @media screen and (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        display: none;
-    }
+  nav ul {
+    flex-direction: column;
+    display: none;
+  }
 
-    .menu-toggle {
-        display: block;
-    }
+  .menu-toggle {
+    display: block;
+  }
 }
 
 /* Responsive Grid Layout */
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  gap: 0.9rem;
 }
 
 /* Responsive Images */
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 /* Responsive Buttons */
 button {
-    padding: 10px 20px;
-    font-size: 1rem;
+  padding: 9px 18px;
+  font-size: 0.9rem;
 }
 
 @media screen and (max-width: 768px) {
-    button {
-        width: 100%;
-    }
+  button {
+    width: 100%;
+  }
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 1rem;
+  text-align: center;
+  padding: 0.9rem;
 }
 
 @media screen and (max-width: 480px) {
-    h1 {
-        font-size: 1.5rem;
-    }
-    h2 {
-        font-size: 1.3rem;
-    }
-    p {
-        font-size: 0.9rem;
-    }
+  h1 {
+    font-size: 1.35rem;
+  }
+  h2 {
+    font-size: 1.17rem;
+  }
+  p {
+    font-size: 0.81rem;
+  }
 }
