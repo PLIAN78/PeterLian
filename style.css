@@ -567,18 +567,12 @@
   height: 48px;
 }
  
-.home-page-text40 {
-  color: rgba(255, 255, 255, 1);
-  height: auto;
-  opacity: 0.00;
-  font-size: 48px;
-  font-style: Regular;
-  text-align: left;
-  font-family: Zain;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: underline;
+.home-page-linkedin {
+  top: 46px;
+  left: 1341px;
+  width: 48px;
+  height: 48px;
+  position: absolute;
 }
 
 
