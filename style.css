@@ -550,25 +550,27 @@
 }
 
 .home-page-frame17 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  position: absolute;
+  top: 20px; /* Adjust the distance from the top */
+  right: 20px; /* Adjust the distance from the right */
+  display: flex;
+  gap: 15px; /* Space between logos */
 }
 
 
 .home-page-github {
-  width: 38px;
-  height: 47px;
+  position: static;
+  margin: 0;
 }
 
 .home-page-instagram {
-  width: 48px;
-  height: 48px;
+  position: static;
+  margin: 0;
 }
 
 .home-page-linkedin {
-  width: 48px;
-  height: 48px;
+ position: static;
+  margin: 0;
 }
 
 
