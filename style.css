@@ -554,7 +554,7 @@
 /* LinkedIn icon */
 .home-page-linkedin {
   display: inline-block; /* Make the LinkedIn icon inline */
-  vertical-align: middle; /* Align vertically with other inline elements */
+  horizontal: middle; /* Align vertically with other inline elements */
   width: 29px; /* Set the width of the icon */
   height: 29px; /* Set the height of the icon */
   margin-left: 18px; /* Add space between LinkedIn and the other icons */
