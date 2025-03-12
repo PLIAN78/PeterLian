@@ -552,11 +552,12 @@
 .home-page-frame17 {
   top: 38px;
   left: 1168px;
-  width: 173px;
+  width: auto;
   display: flex;
   position: absolute;
   align-items: center;
-  justify-content: space-between; /* This will space the logos evenly */
+  gap: 16px; /* Adjust the pixel value as needed */
+  justify-content: space-evenly; /* This will space the logos evenly */
 }
 
 .home-page-github,
