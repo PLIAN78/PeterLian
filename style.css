@@ -549,20 +549,37 @@
   text-decoration: none;
 }
 
-.icons-container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 15px;
-    overflow: visible;
-    z-index: 1000;
+.home-page-frame17 {
+  top: 38px;
+  left: 1168px;
+  width: 173px;
+  display: flex;
+  position: absolute;
+  align-items: center;
 }
-.icons-container img {
-    width: 24px;
-    height: auto;
+ 
+.home-page-github {
+  width: 38px;
+  height: 47px;
 }
-
+.home-page-instagram {
+  width: 48px;
+  height: 48px;
+}
+ 
+.home-page-text40 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  opacity: 0.00;
+  font-size: 48px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Zain;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: underline;
+}
 
 
 
