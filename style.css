@@ -556,17 +556,27 @@
   display: flex;
   position: absolute;
   align-items: center;
+  justify-content: space-between; /* This will space the logos evenly */
 }
- 
+
+.home-page-github,
+.home-page-instagram,
+.home-page-linkedin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .home-page-github {
   width: 38px;
   height: 47px;
 }
+
 .home-page-instagram {
   width: 48px;
   height: 48px;
 }
- 
+
 .home-page-linkedin {
   width: 48px;
   height: 48px;
