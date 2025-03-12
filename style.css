@@ -1,3 +1,4 @@
+
 :root {
   --dl-size-size-large: 130px;
   --dl-size-size-small: 43px;
@@ -550,27 +551,36 @@
 }
 
 .home-page-frame17 {
-  position: absolute;
-  top: 20px; /* Adjust the distance from the top */
-  right: 20px; /* Adjust the distance from the right */
+  top: 38px;
+  left: 1168px;
+  width: 173px;
   display: flex;
-  gap: 15px; /* Space between logos */
+  position: absolute;
+  align-items: center;
+  justify-content: space-between; /* This will space the logos evenly */
 }
 
+.home-page-github,
+.home-page-instagram,
+.home-page-linkedin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .home-page-github {
-  position: static;
-  margin: 0;
+  width: 38px;
+  height: 47px;
 }
 
 .home-page-instagram {
-  position: static;
-  margin: 0;
+  width: 48px;
+  height: 48px;
 }
 
 .home-page-linkedin {
- position: static;
-  margin: 0;
+  width: 48px;
+  height: 48px;
 }
 
 
