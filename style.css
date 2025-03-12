@@ -550,23 +550,11 @@
 }
 
 .home-page-frame17 {
-  top: 38px;
-  left: 1168px;
-  width: auto;
-  display: flex;
-  position: absolute;
-  align-items: center;
-  gap: 16px; /* Adjust the pixel value as needed */
-  justify-content: space-evenly; /* This will space the logos evenly */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
-.home-page-github,
-.home-page-instagram,
-.home-page-linkedin {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .home-page-github {
   width: 38px;
