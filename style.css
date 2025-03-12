@@ -537,7 +537,9 @@
   z-index: -1;
   transform: scaleX(1);
 }
- 
+.home-page-text13{
+   font-weight: normal;
+}
 .Content {
   font-size: 14px;
   font-family: Inter;
@@ -547,18 +549,19 @@
   text-decoration: none;
 }
 
-.social-icons {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  gap: 15px;
+.icons-container {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    display: flex;
+    gap: 10px; /* Adjust spacing between icons */
 }
 
-.social-icons a img {
-  width: 30px; /* Adjust size as needed */
-  height: auto;
+.icons-container img {
+    width: 24px; /* Adjust icon size */
+    height: auto;
 }
+
 
 
 
