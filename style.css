@@ -551,16 +551,18 @@
 
 .icons-container {
     position: absolute;
-    top: 10px; /* Adjust as needed */
-    right: 10px; /* Adjust as needed */
+    top: 10px;
+    right: 10px;
     display: flex;
-    gap: 10px; /* Adjust spacing between icons */
+    gap: 15px;
+    overflow: visible;
+    z-index: 1000;
 }
-
 .icons-container img {
-    width: 24px; /* Adjust icon size */
+    width: 24px;
     height: auto;
 }
+
 
 
 
