@@ -669,5 +669,5 @@
   }
 }
 .button, .input, .textarea, .list, .list-item, .teleport-show, .thq-input, .thq-button-filled, .thq-button-outline, .thq-button-flat, .thq-heading-1, .thq-heading-2, .thq-heading-3, .thq-body-large, .thq-body-small, .thq-team-image-round, .thq-section-padding, .thq-section-max-width, .thq-img-ratio-1-1, .thq-img-ratio-16-9, .thq-img-ratio-4-3, .thq-img-ratio-4-6, .thq-img-round, .thq-flex-column, .thq-flex-row, .thq-grid-6, .thq-grid-5, .thq-card, .thq-box-shadow, .thq-grid-3, .thq-grid-4, .thq-grid-2, .thq-checkbox, .thq-select, .thq-divider-horizontal, .thq-icon-small, .thq-button-icon, .thq-icon-medium, .thq-icon-x-small, .thq-link, .thq-grid-auto-300, .thq-animated-group-vertical-reverse, .thq-animated-group-horizontal-reverse, .thq-animated-group-vertical, .thq-animated-group-horizontal, .thq-animated-group-container-vertical, .thq-animated-group-container-horizontal, .thq-mask-image-vertical, .thq-mask-image-horizontal, .thq-img-scale, .thq-animated-card-bg-1, .thq-animated-card-bg-2, .thq-button-animated, .home-page-text13, .Content, .home-page-frame17, .home-page-github, .home-page-instagram, .home-page-linkedin {
-  transform: translateX(-90px);
+  transform: translateX(-70px);
 }
