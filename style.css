@@ -577,6 +577,11 @@
   transform: none !important;
 }
 
+.home-page-linkedin:hover,
+.home-page-instagram:hover,
+.home-page-github:hover {
+  opacity: 0.8; /* Example hover effect */
+}
 
 @media(max-width: 991px) {
   .thq-grid-4 {
