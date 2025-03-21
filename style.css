@@ -571,6 +571,11 @@
   object-fit: contain; /* Maintain aspect ratio */
 }
 
+/* Override the transform rule for .home-page-frame17 and its children */
+.home-page-frame17,
+.home-page-frame17 * {
+  transform: none !important;
+}
 
 
 @media(max-width: 991px) {
