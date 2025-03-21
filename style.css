@@ -551,38 +551,25 @@
 }
 
 .home-page-frame17 {
-  top: 38px;
-  left: 1168px;
-  width: 173px;
-  display: flex;
-  position: absolute;
-  align-items: center;
-  justify-content: space-between; /* This will space the logos evenly */
+  display: flex; /* Use Flexbox to align items horizontally */
+  align-items: center; /* Vertically center the logos */
+  gap: 20px; /* Add 20px spacing between the logos */
 }
 
-.home-page-github,
+.home-page-linkedin,
 .home-page-instagram,
-.home-page-linkedin {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .home-page-github {
-  width: 38px;
-  height: 47px;
+  width: 48px; /* Set a fixed width for all logos */
+  height: 48px; /* Set a fixed height for all logos */
 }
 
-.home-page-instagram {
-  width: 48px;
-  height: 48px;
+.home-page-linkedin img,
+.home-page-instagram img,
+.home-page-github img {
+  width: 100%; /* Ensure the images fill their containers */
+  height: 100%; /* Ensure the images fill their containers */
+  object-fit: contain; /* Maintain aspect ratio */
 }
-
-.home-page-linkedin {
-  width: 48px;
-  height: 48px;
-}
-
 
 
 
