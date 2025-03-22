@@ -448,14 +448,14 @@
 .thq-animated-group-container-vertical {
   gap: var(--dl-space-space-unit);
   display: flex;
-  overflow: hidden;
+  overflow: auto;
   flex-direction: column;
 }
  
 .thq-animated-group-container-horizontal {
   gap: var(--dl-space-space-unit);
   display: flex;
-  overflow: hidden;
+  overflow: auto;
 }
  
 .thq-mask-image-vertical {
