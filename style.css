@@ -555,8 +555,11 @@
   display: flex; /* Use Flexbox to align items horizontally */
   align-items: center; /* Vertically center the logos */
   gap: 20px; /* Add 20px spacing between the logos */
+  transform: translateX(-50px);
 }
-
+.home-page-linkedin{
+   transform: translateX(-500px);
+}
 .home-page-linkedin,
 .home-page-instagram,
 .home-page-github {
