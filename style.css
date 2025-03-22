@@ -576,7 +576,12 @@
 .home-page-you:hover{
   opacity: 0.8; /* Example hover effect */
 }
-
+.home-page-linkedin {
+  position: fixed; /* Lock the logo in place */
+  top: 20px; /* Distance from the top of the screen */
+  right: 20px; /* Distance from the right of the screen */
+  z-index: 1000; /* Ensure it stays on top of other elements */
+}
 @media(max-width: 991px) {
   .thq-grid-4 {
     grid-template-columns: 1fr 1fr 1fr;
