@@ -552,7 +552,7 @@
 }
 
 .home-page-frame17 {
-   margin-top: 10px; /* Move the container down by 10px *
+   margin-top: 30px; /* Move the container down by 10px *
   display: flex; /* Use Flexbox to align items horizontally */
   align-items: center; /* Vertically center the logos */
   gap: 20px; /* Add 20px spacing between the logos */
