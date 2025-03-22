@@ -550,7 +550,9 @@
   text-transform: none;
   text-decoration: none;
 }
-
+.home-page-linkedin{
+   margin-top: -30px; /* Move the container down by 10px *
+}
 .home-page-frame17 {
    margin-top: 30px; /* Move the container down by 10px *
   display: flex; /* Use Flexbox to align items horizontally */
