@@ -557,15 +557,6 @@
   gap: 20px; /* Add 20px spacing between the logos */
   transform: translateX(-50px);
 }
-.home-page-linkedin{
-   transform: translateX(-500px);
-}
-.home-page-linkedin,
-.home-page-instagram,
-.home-page-github {
-  width: 48px; /* Set a fixed width for all logos */
-  height: 48px; /* Set a fixed height for all logos */
-}
 
 .home-page-linkedin img,
 .home-page-instagram img,
@@ -575,11 +566,6 @@
   object-fit: contain; /* Maintain aspect ratio */
 }
 
-/* Override the transform rule for .home-page-frame17 and its children */
-.home-page-frame17,
-.home-page-frame17 * {
-  transform: none !important;
-}
 
 .home-page-linkedin:hover,
 .home-page-instagram:hover,
