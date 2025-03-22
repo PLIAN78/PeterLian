@@ -580,7 +580,9 @@
 
 .home-page-linkedin:hover,
 .home-page-instagram:hover,
-.home-page-github:hover {
+.home-page-github:hover,
+.home-page-pen:hover,
+.home-page-you:hover{
   opacity: 0.8; /* Example hover effect */
 }
 
