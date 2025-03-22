@@ -555,7 +555,7 @@
   display: flex; /* Use Flexbox to align items horizontally */
   align-items: center; /* Vertically center the logos */
   gap: 20px; /* Add 20px spacing between the logos */
-  transform: translateX(-50px);
+  transform: translateX(-90px);
 }
 
 .home-page-linkedin img,
