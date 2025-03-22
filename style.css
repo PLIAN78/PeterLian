@@ -565,7 +565,11 @@
   height: 100%; /* Ensure the images fill their containers */
   object-fit: contain; /* Maintain aspect ratio */
 }
-
+.home-page-linkedin {
+  position: absolute; /* Position the LinkedIn logo absolutely */
+  left: 0; /* Place it at the far left of the screen */
+  transform: translateX(0); /* Reset any previous transformations */
+}
 
 .home-page-linkedin:hover,
 .home-page-instagram:hover,
