@@ -379,8 +379,20 @@
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
 }
+.home-page-frame22 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  width: 100%;
+  text-align: center;
+}
+
 .home-page-text34 {
-  transform: none; /* Replaces the translateY(30px) that was causing issues */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 .contact-info-container {
   display: flex;
@@ -592,14 +604,7 @@
 .home-page-text13{
    font-weight: normal;
 }
-.home-page-frame22 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  width: 100%;
-  text-align: center;
-}
+
 .Content {
   font-size: 14px;
   font-family: Inter;
