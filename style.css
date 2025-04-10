@@ -380,7 +380,55 @@
   height: var(--dl-size-size-xsmall);
 }
 .home-page-text34 {
-  transform: translateY(30px);
+  transform: none; /* Replaces the translateY(30px) that was causing issues */
+}
+.contact-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  width: 100%;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.contact-label {
+  font-weight: 600;
+  color: var(--dl-color-theme-neutral-dark);
+}
+
+.contact-link {
+  color: var(--dl-color-theme-primary1);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--dl-color-theme-primary2);
+  text-decoration: underline;
+}
+
+.contact-text {
+  color: var(--dl-color-theme-neutral-dark);
+}
+
+/* For mobile responsiveness */
+@media (max-width: 767px) {
+  .contact-info-container {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 479px) {
+  .contact-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
 }
 .thq-link {
   cursor: pointer;
