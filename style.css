@@ -592,6 +592,14 @@
 .home-page-text13{
    font-weight: normal;
 }
+.home-page-frame22 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  width: 100%;
+  text-align: center;
+}
 .Content {
   font-size: 14px;
   font-family: Inter;
