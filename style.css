@@ -725,4 +725,160 @@
     grid-template-columns: 1fr;
   }
 }
+/* General Styles */
+.home-page-container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
+.home-page-home-page {
+  padding: 20px;
+  max-width: 1660px;
+  margin: 0 auto;
+}
+
+/* Mobile First Approach */
+@media screen and (max-width: 767px) {
+  .home-page-home-page {
+    padding: 15px;
+  }
+
+  .home-page-text10 {
+    font-size: 28px;
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .home-page-frame25 {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  .home-page-frame16 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .home-page-frame141,
+  .home-page-frame15,
+  .home-page-frame142,
+  .home-page-frame143 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .home-page-frame20 {
+    padding: 15px;
+  }
+
+  .home-page-frame22 {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .home-page-text34 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .home-page-frame17 {
+    transform: none;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .home-page-linkedin,
+  .home-page-instagram,
+  .home-page-github,
+  .home-page-pen,
+  .home-page-you {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .home-page-frame16 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Desktop Styles */
+@media screen and (min-width: 992px) {
+  .home-page-frame16 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+  }
+
+  .home-page-frame17 {
+    justify-content: flex-start;
+    gap: 20px;
+  }
+}
+
+/* Contact Section Improvements */
+.home-page-frame22 {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: var(--dl-color-theme-secondary2);
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.home-page-text34 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Project Cards */
+.home-page-frame141,
+.home-page-frame15,
+.home-page-frame142,
+.home-page-frame143 {
+  background: var(--dl-color-theme-neutral-light);
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.home-page-frame141:hover,
+.home-page-frame15:hover,
+.home-page-frame142:hover,
+.home-page-frame143:hover {
+  transform: translateY(-5px);
+}
+
+/* Social Icons */
+.home-page-frame17 {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.home-page-linkedin,
+.home-page-instagram,
+.home-page-github,
+.home-page-pen,
+.home-page-you {
+  width: 40px;
+  height: 40px;
+  transition: opacity 0.3s ease;
+}
+
+.home-page-linkedin:hover,
+.home-page-instagram:hover,
+.home-page-github:hover,
+.home-page-pen:hover,
+.home-page-you:hover {
+  opacity: 0.7;
+}
