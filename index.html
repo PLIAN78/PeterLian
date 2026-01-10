@@ -1,362 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peter Lian Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="public/external/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="public/external/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="public/external/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peter Lian Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="public/external/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="public/external/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="public/external/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
-        body {
-            background-color: #0d2630;
-            color: #fff;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .social-icons a {
-            color: #fff;
-            margin-left: 15px;
-            font-size: 20px;
-            text-decoration: none;
-        }
-
-        .main-content {
-            background-color: #f5f2e8;
-            border-radius: 20px;
-            margin: 20px 0;
-            padding: 20px;
-            color: #333;
-        }
-
-        .header-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .section-title {
-            background-color: #0d2630;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 15px;
-            font-size:24px;
-            font-weight: bold;
-        }
-
-        .date {
-            color: #333;
-            font-weight: bold;
-        }
-
-        .about-me, .my-stories {
-            background-color: #a8e6cf;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .my-stories {
-            background-color: #a8e6cf;
-        }
-
-        .contact {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .contact-title {
-            background-color: #0d2630;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        .contact-info {
-            background-color: #a8e6cf;
-            border-radius: 15px;
-            padding: 15px;
-            flex-grow: 1;
-            margin-left: 20px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background-color: #fff;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .project-card.blue {
-            background-color: #add8e6;
-        }
-
-        .project-card.red {
-            background-color: #ff6b6b;
-            color: white;
-        }
-
-        .project-card.gray {
-            background-color: #f0f0f0;
-        }
-
-        .project-icon {
-            width: 80px;
-            height: 80px;
-            background-color: #ddd;
-            border-radius: 10px;
-            margin-right: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-        }
-
-        .project-icon.map {
-            background-color: #ffcc99;
-        }
-
-        .project-icon.ai {
-            background-color: #99ccff;
-        }
-
-        .project-icon.drone {
-            background-color: #99ffcc;
-        }
-
-        .project-content {
-            color:#333;
-            flex: 1;
-        }
-
-        .coming-soon {
-            background-color: #ff6b6b;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            border-radius: 15px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-        .site-footer {
-    background-color: #063842;
-    color: #fff;
-    padding: 30px 0;
-    margin-top: 40px;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.footer-icons a {
-    color: #26bad7;
-    margin-left: 15px;
-    font-size: 20px;
-}
-
-.footer-icons a:hover {
-    color: #ffffff;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    html {
+      scroll-behavior: smooth; 
+    }
+    body {
+      color: #fff;
+      line-height: 1.6;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(38, 186, 215, 0.18), transparent 55%),
+                  radial-gradient(1000px 500px at 80% 20%, rgba(168, 230, 207, 0.14), transparent 60%),
+                  linear-gradient(135deg, #0d2630, #0b1f27, #0d2630);
+      background-size: 120% 120%;
+      animation: bgFloat 18s ease-in-out infinite;
+      overflow-x: hidden;
+    }
+    @keyframes bgFloat {
+      0%   { background-position: 0% 0%; }
+      50%  { background-position: 100% 80%; }
+      100% { background-position: 0% 0%; }
+    }
 
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .header-row {
-                flex-direction: column;
-            }
 
-            .date {
-                margin-top: 10px;
-            }
+      
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      z-index: 9999;
+      background: linear-gradient(90deg, #26bad7, #a8e6cf);
+      box-shadow: 0 0 18px rgba(38, 186, 215, 0.35);
+      border-bottom-right-radius: 999px;
+      border-top-right-radius: 999px;
+      transform: translateZ(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      body { animation: none; }
+      * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    }
 
-            .contact {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 18px;
+        
+      margin-top: 18px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 700ms ease forwards;
+    }
 
-            .contact-info {
-                margin-left: 0;
-                margin-top: 15px;
-                width: 100%;
-            }
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(90deg, #ffffff 0%, #26bad7 35%, #ffffff 70%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: logoShimmer 3.2s ease-in-out infinite;
+      letter-spacing: 0.2px;
+    }
 
-        @media (max-width: 480px) {
-            .project-card {
-                flex-direction: column;
-                text-align: center;
-            }
+    @keyframes logoShimmer {
+      0%   { background-position: 0% 0%; }
+      50%  { background-position: 100% 0%; }
+      100% { background-position: 0% 0%; }
+    }
 
-            .project-icon {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
+    .social-icons a {
+      color: #fff;
+      margin-left: 15px;
+      font-size: 20px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
 
-            .social-icons a {
-                margin-left: 10px;
-                font-size: 18px;
-            }
-        }
-        @media (max-width: 600px) {
-  .footer-content {
-      flex-direction: column;
-      gap: 15px;
-  }
-}
+    .social-icons a:hover {
+      transform: translateY(-3px);
+      background: rgba(38, 186, 215, 0.16);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(38, 186, 215, 0.25);
+    }
+    .main-content {
+      background-color: #f5f2e8;
+      border-radius: 20px;
+      margin: 20px 0;
+      padding: 20px;
+      color: #333;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(13, 38, 48, 0.10);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 750ms ease forwards;
+      animation-delay: 120ms;
+    }
 
-    </style>
+    .main-content::before {
+      content: "";
+      position: absolute;
+      inset: -60px -60px auto -60px;
+      height: 140px;
+      background: radial-gradient(circle at 20% 20%, rgba(38, 186, 215, 0.15), transparent 60%);
+      pointer-events: none;
+      filter: blur(2px);
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .header-row::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -10px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(13, 38, 48, 0.25), transparent);
+    }
+
+    .section-title {
+      background-color: #0d2630;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+      transform: translateZ(0);
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 8px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(38, 186, 215, 0.85), transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 220ms ease;
+      opacity: 0.9;
+    }
+
+    .section-title:hover::after {
+      transform: scaleX(1);
+    }
+
+    .date {
+      color: #333;
+      font-weight: bold;
+      align-self: center;
+    }
+    .about-me, .my-stories {
+      background-color: #a8e6cf;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      background-image:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.00)),
+        repeating-linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.10) 0px,
+          rgba(255, 255, 255, 0.10) 2px,
+          rgba(255, 255, 255, 0.00) 10px,
+          rgba(255, 255, 255, 0.00) 14px
+        );
+      box-shadow: 0 14px 26px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(13, 38, 48, 0.08);
+      transform: translateZ(0);
+    }
+
+    .about-me::before, .my-stories::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(600px 220px at 20% 10%, rgba(38, 186, 215, 0.16), transparent 55%);
+      pointer-events: none;
+    }
+
+    .contact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .contact-title {
+      background-color: #0d2630;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      display: inline-block;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .contact-info {
+      background-color: #a8e6cf;
+      border-radius: 15px;
+      padding: 15px;
+      flex-grow: 1;
+      margin-left: 20px;
+
+      box-shadow: 0 14px 26px rgba(0, 0, 0, 0.10);
+      border: 1px solid rgba(13, 38, 48, 0.08);
+      background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.00));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 800ms ease forwards;
+      animation-delay: 220ms;
+    }
+
+    .project-card {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(13, 38, 48, 0.08);
+      position: relative;
+      overflow: hidden;
+      transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+      transform-style: preserve-3d;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: -60%;
+      left: -60%;
+      width: 140%;
+      height: 140%;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.50) 20%,
+        rgba(255, 255, 255, 0.06) 45%,
+        transparent 70%
+      );
+      transform: translateX(-120%) rotate(12deg);
+      transition: transform 550ms ease;
+      pointer-events: none;
+    }
+
+    .project-card:hover::before {
+      transform: translateX(120%) rotate(12deg);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px) rotateX(1.2deg) rotateY(-1.2deg);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.18);
+      filter: saturate(1.03);
+    }
+
+    .project-card.blue { background-color: #add8e6; }
+    .project-card.red  { background-color: #ff6b6b; color: white; }
+    .project-card.gray { background-color: #f0f0f0; }
+
+    .project-icon {
+      width: 80px;
+      height: 80px;
+      background-color: #ddd;
+      border-radius: 10px;
+      margin-right: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      position: relative;
+      transition: transform 220ms ease, box-shadow 220ms ease;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
+    }
+
+    .project-card:hover .project-icon {
+      transform: scale(1.06) translateY(-2px);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+    }
+
+    .project-icon.map   { background-color: #ffcc99; }
+    .project-icon.ai    { background-color: #99ccff; }
+    .project-icon.drone { background-color: #99ffcc; }
+
+    .project-content {
+      color: #333;
+      flex: 1;
+    }
+
+    .project-card.red .project-content {
+      color: #fff; 
+    }
+
+    .coming-soon {
+      background-color: #ff6b6b;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      border-radius: 15px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    a:hover {
+      opacity: 0.92;
+    }
+
+    a:focus-visible {
+      outline: 3px solid rgba(38, 186, 215, 0.75);
+      outline-offset: 4px;
+      border-radius: 10px;
+    }
+
+    .projects-grid a {
+      cursor: pointer;
+    }
+
+    .site-footer {
+      background-color: #063842;
+      color: #fff;
+      padding: 30px 0;
+      margin-top: 40px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-icons a {
+      color: #26bad7;
+      margin-left: 15px;
+      font-size: 20px;
+    }
+
+    .footer-icons a:hover {
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 16px 14px;
+      }
+
+      .header-row {
+        flex-direction: column;
+      }
+
+      .date {
+        margin-top: 10px;
+      }
+
+      .contact {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-info {
+        margin-left: 0;
+        margin-top: 15px;
+        width: 100%;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .project-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .project-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+
+      .social-icons a {
+        margin-left: 8px;
+        font-size: 18px;
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-content {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">Peter Lian Portfolio</div>
-            <div class="social-icons">
-                <a href="https://www.instagram.com/peterlian64"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/PLIAN78"><i class="fab fa-github"></i></a>
-                <a href="https://medium.com/@lianpeter1225"><i class="fab fa-medium"></i></a>
-                <a href="https://www.youtube.com/@ppowerstation3547"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.linkedin.com/in/yishuolian/"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </header>
+  <div id="scroll-progress" aria-hidden="true"></div>
 
-        <div class="main-content">
-            <div class="header-row">
-                <div class="section-title">About Me</div>
-                <div class="date">June-2025</div>
-            </div>
+  <div class="container">
+    <header>
+      <div class="logo">Peter Lian Portfolio</div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/peterlian64" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/PLIAN78" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://medium.com/@lianpeter1225" aria-label="Medium"><i class="fab fa-medium"></i></a>
+        <a href="https://www.youtube.com/@ppowerstation3547" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/yishuolian/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </header>
 
-            <div class="about-me">
-                <p>Hi, I'm Peter Lian, an aspiring developer/designer with a passion for creating engaging digital experiences(ML, AR/XR). Currently, I am a student at the University of Waterloo, pursuing a degree in computer science, where I aim to further hone my skills. Beyond tech, I'm an entrepreneur, competitive fencer, and experienced drone pilot.</p>
-            </div>
+    <div class="main-content">
+      <div class="header-row">
+        <div class="section-title">About Me</div>
+        <div class="date">June-2025</div>
+      </div>
 
-            <div class="section-title">My Stories</div>
-            <div class="my-stories">
-                <p>My journey in front-end development began in grade 9, when I worked on school projects and later worked as a front-end developer at Experience Driven during my 2024 summer co-op.</p>
-                <br>
-                <p>I'm also the co-founder and marketing lead of AI Ventura, a startup focused on teaching elementary students about AI technologies.</p>
-                <br>
-                <p>Outside of tech, I've been a drone pilot, competed in various events, and was a former local elementary school, where I now also serve as a referee.</p>
-            </div>
+      <div class="about-me">
+        <p>
+          Hi, I'm Peter Lian, an aspiring developer/designer with a passion for creating engaging digital experiences(ML, AR/XR).
+          Currently, I am a student at the University of Waterloo, pursuing a degree in computer science, where I aim to further hone my skills.
+          Beyond tech, I'm an entrepreneur, competitive fencer, and experienced drone pilot.
+        </p>
+      </div>
 
-            <div class="contact">
-                <div class="contact-title">Contact</div>
-                <div class="contact-info">
-                    Email: <a href="mailto:lianpeter1225@gmail.com">lianpeter1225@gmail.com</a><br>
-                    Phone: (289) 931-4585
-                </div>
-            </div>
+      <div class="section-title">My Stories</div>
+      <div class="my-stories">
+        <p>
+          My journey in front-end development began in grade 9, when I worked on school projects and later worked as a front-end developer at Experience Driven during my 2024 summer co-op.
+        </p>
+        <br />
+        <p>
+          I'm also the co-founder and marketing lead of AI Ventura, a startup focused on teaching elementary students about AI technologies.
+        </p>
+        <br />
+        <p>
+          Outside of tech, I've been a drone pilot, competed in various events, and was a former local elementary school, where I now also serve as a referee.
+        </p>
+      </div>
+
+      <div class="contact">
+        <div class="contact-title">Contact</div>
+        <div class="contact-info">
+          Email: <a href="mailto:lianpeter1225@gmail.com">lianpeter1225@gmail.com</a><br />
+          Phone: (289) 931-4585
         </div>
-
-        <div class="header-row">
-            <div class="section-title">Startup Projects</div>
-        </div>
-
-        <div class="projects-grid">
-            <div class="project-card">
-                <a href="https://confused-lizard-ada.notion.site/NewsMapper-d6bdf72d62ee4da89aeb2e6d34145bc4">
-                <div class="project-icon map"><img src="public/external/image11612-z9qa-200h.png" alt="Drone Company Logo" style="max-width: 100%; max-height: 100%;"></div>
-                    </a>
-                <div class="project-content">
-                    <p>NewsMapper: With my partner, we built a platform that connects news stories to the visualization of a map.</p>
-                </div>
-            </div>
-
-            <div class="project-card red">
-                <a href="https://www.linkedin.com/company/ai-ventura ">
-                <div class="project-icon ai"><img src="public/external/image169333791317011614-2ws-200h.png" alt="Drone Company Logo" style="max-width: 100%; max-height: 100%;"></div>
-                </a>
-                <div class="project-content">
-                    <p>AI Ventura: The goal for this mini startup was to provide opportunities to learn about AI technologies. We achieved decent success but ended due to extensive exams.</p>
-                </div>
-            </div>
-
-            <div class="project-card gray">
-                <a href="https://masterblue.ca/">
-                <div class="project-icon drone"><img src="public/external/image2025031114541911716-tcpm-200h.png" alt="Drone Company Logo" style="max-width: 100%; max-height: 100%;"></div>
-                </a>
-                <div class="project-content">
-                    <p>MasterBlue: My drone company has been selling and distributing drones since 2020.</p>
-                </div>
-            </div>
-            <div class="project-card red">
-                <a href="https://krocoprint.com/">
-                <div class="project-icon ai"><img src="image-removebg-preview__74__480.png" alt="3D printing Company Logo" style="max-width: 100%; max-height: 100%;"></div>
-                </a>
-                <div class="project-content">
-                    <p>KrocoPrint:3D printing startup that makes customized gadgets</p>
-                </div>
-            </div>
-<!--             <div class="coming-soon">Coming Soon...</div> -->
-        </div>
+      </div>
     </div>
-    <footer class="site-footer">
-  <div class="container footer-content">
-    <p>© 2025 Peter Lian. All rights reserved.</p>
 
-    <div class="footer-icons">
-      <div style="display: flex; align-items: center; gap: 8px;">
-    <a href="https://cs.uwatering.com/#peterlian.com?nav=prev">←</a>
-    <a href="https://cs.uwatering.com/#peterlian.com" target="_blank">
-        <img src="https://cs.uwatering.com/icon.white.svg" alt="CS Webring" style="width: 24px; height: auto; opacity: 0.8;"/>
-    </a>
-    <a href="https://cs.uwatering.com/#peterlian.com?nav=next">→</a>
-</div>
+    <div class="header-row">
+      <div class="section-title">Startup Projects</div>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <a href="https://confused-lizard-ada.notion.site/NewsMapper-d6bdf72d62ee4da89aeb2e6d34145bc4">
+          <div class="project-icon map">
+            <img src="public/external/image11612-z9qa-200h.png" alt="Drone Company Logo" style="max-width: 100%; max-height: 100%;" />
+          </div>
+        </a>
+        <div class="project-content">
+          <p>NewsMapper: With my partner, we built a platform that connects news stories to the visualization of a map.</p>
+        </div>
+      </div>
+
+      <div class="project-card red">
+        <a href="https://www.linkedin.com/company/ai-ventura ">
+          <div class="project-icon ai">
+            <img src="public/external/image169333791317011614-2ws-200h.png" alt="Drone Company Logo" style="max-width: 100%; max-height: 100%;" />
+          </div>
+        </a>
+        <div class="project-content">
+          <p>AI Ventura: The goal for this mini startup was to provide opportunities to learn about AI technologies. We achieved decent success but ended due to extensive exams.</p>
+        </div>
+      </div>
+
+      <div class="project-card gray">
+        <a href="https://masterblue.ca/">
+          <div class="project-icon drone">
+            <img src="public/external/image2025031114541911716-tcpm-200h.png" alt="Drone Company Logo" style="max-width: 100%; max-height: 100%;" />
+          </div>
+        </a>
+        <div class="project-content">
+          <p>MasterBlue: My drone company has been selling and distributing drones since 2020.</p>
+        </div>
+      </div>
+
+      <div class="project-card red">
+        <a href="https://krocoprint.com/">
+          <div class="project-icon ai">
+            <img src="image-removebg-preview__74__480.png" alt="3D printing Company Logo" style="max-width: 100%; max-height: 100%;" />
+          </div>
+        </a>
+        <div class="project-content">
+          <p>KrocoPrint:3D printing startup that makes customized gadgets</p>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© 2025 Peter Lian. All rights reserved.</p>
 
+      <div class="footer-icons">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <a href="https://cs.uwatering.com/#peterlian.com?nav=prev">←</a>
+          <a href="https://cs.uwatering.com/#peterlian.com" target="_blank">
+            <img src="https://cs.uwatering.com/icon.white.svg" alt="CS Webring" style="width: 24px; height: auto; opacity: 0.8;" />
+          </a>
+          <a href="https://cs.uwatering.com/#peterlian.com?nav=next">→</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const bar = document.getElementById('scroll-progress');
+      if (!bar) return;
+
+      const update = () => {
+        const doc = document.documentElement;
+        const scrollTop = doc.scrollTop || document.body.scrollTop;
+        const scrollHeight = doc.scrollHeight || document.body.scrollHeight;
+        const clientHeight = doc.clientHeight || window.innerHeight;
+        const max = Math.max(1, scrollHeight - clientHeight);
+        const pct = (scrollTop / max) * 100;
+        bar.style.width = pct + '%';
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+    })();
+  </script>
 </body>
 </html>
