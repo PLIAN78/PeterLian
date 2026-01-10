@@ -183,6 +183,30 @@
             color: #0066cc;
             text-decoration: none;
         }
+        .site-footer {
+    background-color: #063842;
+    color: #fff;
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-icons a {
+    color: #26bad7;
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+.footer-icons a:hover {
+    color: #ffffff;
+}
+
 
         /* Responsive Styles */
         @media (max-width: 768px) {
@@ -226,6 +250,13 @@
                 font-size: 18px;
             }
         }
+        @media (max-width: 600px) {
+  .footer-content {
+      flex-direction: column;
+      gap: 15px;
+  }
+}
+
     </style>
 </head>
 <body>
@@ -311,5 +342,21 @@
 <!--             <div class="coming-soon">Coming Soon...</div> -->
         </div>
     </div>
+    <footer class="site-footer">
+  <div class="container footer-content">
+    <p>© 2025 Peter Lian. All rights reserved.</p>
+
+    <div class="footer-icons">
+      <div style="display: flex; align-items: center; gap: 8px;">
+    <a href="https://cs.uwatering.com/#peterlian.com?nav=prev">←</a>
+    <a href="https://cs.uwatering.com/#peterlian.com" target="_blank">
+        <img src="https://cs.uwatering.com/icon.black.svg" alt="CS Webring" style="width: 24px; height: auto; opacity: 0.8;"/>
+    </a>
+    <a href="https://cs.uwatering.com/#peterlian.com?nav=next">→</a>
+</div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
