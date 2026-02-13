@@ -234,36 +234,34 @@
       background: radial-gradient(600px 220px at 20% 10%, rgba(38, 186, 215, 0.16), transparent 55%);
       pointer-events: none;
     }
+.contact-info form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-    .contact {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-    }
+.contact-info input,
+.contact-info textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
 
-    .contact-title {
-      background-color: #0d2630;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 20px;
-      display: inline-block;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-    }
+.contact-info button {
+  background: #0d2630;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
-    .contact-info {
-      background-color: #a8e6cf;
-      border-radius: 15px;
-      padding: 15px;
-      flex-grow: 1;
-      margin-left: 20px;
+.contact-info button:hover {
+  background: #26bad7;
+}
 
-      box-shadow: 0 14px 26px rgba(0, 0, 0, 0.10);
-      border: 1px solid rgba(13, 38, 48, 0.08);
-      background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.00));
-      position: relative;
-      overflow: hidden;
-    }
 
     .projects-grid {
       display: grid;
@@ -514,13 +512,23 @@
       </div>
 
       <div class="contact">
-        <div class="contact-title">Contact</div>
-        <div class="contact-info">
-          Email: <a href="mailto:lianpeter1225@gmail.com">lianpeter1225@gmail.com</a><br />
-          Phone: (289) 931-4585
-        </div>
-      </div>
-    </div>
+  <div class="contact-title">Contact</div>
+
+  <div class="contact-info">
+    <form action="https://formspree.io/f/mdalerpp" method="POST">
+      
+      <input type="text" name="name" placeholder="Your name" required />
+      
+      <input type="email" name="email" placeholder="Your email" required />
+      
+      <textarea name="message" rows="4" placeholder="Your message..." required></textarea>
+      
+      <button type="submit">Send Message</button>
+
+    </form>
+  </div>
+</div>
+
 
     <div class="header-row">
       <div class="section-title">Startup Projects</div>
