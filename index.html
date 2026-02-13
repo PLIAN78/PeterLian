@@ -237,29 +237,53 @@
 .contact-info form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
+/* INPUTS */
 .contact-info input,
 .contact-info textarea {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(13, 38, 48, 0.15);
   font-size: 14px;
-}
 
-.contact-info button {
-  background: #0d2630;
-  color: white;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
+  background: #a8e6cf;     /* mint teal */
+  color: #0d2630;          /* dark text */
+
   transition: 0.2s;
 }
 
+/* placeholder text */
+.contact-info input::placeholder,
+.contact-info textarea::placeholder {
+  color: rgba(13, 38, 48, 0.6);
+}
+
+/* focus glow */
+.contact-info input:focus,
+.contact-info textarea:focus {
+  outline: none;
+  border-color: #26bad7;
+  box-shadow: 0 0 0 3px rgba(38, 186, 215, 0.3);
+}
+
+/* BUTTON */
+.contact-info button {
+  background: #0d2630;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.25s;
+}
+
+/* hover */
 .contact-info button:hover {
   background: #26bad7;
+  transform: translateY(-1px);
 }
 
 
