@@ -31,6 +31,9 @@
       --shadow: 0 18px 40px rgba(0,0,0,0.22);
       --softShadow: 0 14px 26px rgba(0,0,0,0.12);
       --ring: 0 0 0 3px rgba(38,186,215,0.3);
+
+      --ph0:#0d2630;
+      --ph1:#26bad7;
     }
 
     *{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
@@ -82,6 +85,8 @@
       margin-top:18px;
       opacity:0; transform:translateY(10px);
       animation: fadeUp 700ms ease forwards;
+      gap:12px;
+      flex-wrap:wrap;
     }
     @keyframes fadeUp{ to{ opacity:1; transform:translateY(0); } }
 
@@ -104,6 +109,7 @@
     .social-icons{
       display:flex; align-items:center; gap:10px; flex-wrap:wrap;
       justify-content:flex-end;
+      margin-left:auto;
     }
     .social-icons a{
       color:#fff;
@@ -274,7 +280,7 @@
       box-shadow: 0 0 0 3px rgba(38,186,215,0.12);
     }
 
-    /* Project grid */
+    /* Grid */
     .projects-grid{
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -312,23 +318,39 @@
       filter: saturate(1.03);
     }
 
-    .project-top{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-    }
-    .project-icon{
+    .project-top{ display:flex; gap:12px; align-items:flex-start; }
+
+    /* NEW: image logo placeholder */
+    .logo-wrap{
       width:56px; height:56px;
       border-radius:14px;
+      flex: 0 0 auto;
+      overflow:hidden;
+      position:relative;
+      border: 1px solid rgba(38,186,215,0.28);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.10);
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(38,186,215,0.25), transparent 60%),
+        linear-gradient(135deg, rgba(13,38,48,0.10), rgba(255,255,255,0.65));
+    }
+    .logo-wrap img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .logo-wrap.placeholder::after{
+      content:"IMG";
+      position:absolute;
+      inset:0;
       display:flex;
       align-items:center;
       justify-content:center;
-      flex: 0 0 auto;
-      background: rgba(38,186,215,0.14);
-      border: 1px solid rgba(38,186,215,0.25);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.10);
-      color: var(--deep);
-      font-size:22px;
+      font-weight:900;
+      letter-spacing:1px;
+      font-size:12px;
+      color: rgba(13,38,48,0.55);
+      background: linear-gradient(135deg, rgba(255,255,255,0.65), rgba(255,255,255,0.25));
     }
 
     .project-title{
@@ -447,7 +469,6 @@
     }
 
     @media (max-width: 768px){
-      header{ padding:16px 14px; gap:12px; flex-wrap:wrap; }
       .header-row{ flex-direction:column; align-items:flex-start; }
       .date{ margin-top:6px; }
     }
@@ -462,35 +483,27 @@
       <div class="logo">Peter Lian Portfolio 廉益碩</div>
 
       <div class="social-icons">
-        <!-- FIXED X icon -->
         <a href="https://x.com/peterlian18774" aria-label="X / Twitter" title="X">
           <i class="fa-brands fa-x-twitter"></i>
         </a>
-
         <a href="https://devpost.com/lianpeter1225?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav" aria-label="Devpost" title="Devpost">
           <i class="fa-solid fa-d"></i>
         </a>
-
         <a href="https://www.tiktok.com/@pierre.l35" aria-label="TikTok" title="TikTok">
           <i class="fa-brands fa-tiktok"></i>
         </a>
-
         <a href="https://www.instagram.com/peterlian64" aria-label="Instagram" title="Instagram">
           <i class="fa-brands fa-instagram"></i>
         </a>
-
         <a href="https://github.com/PLIAN78" aria-label="GitHub" title="GitHub">
           <i class="fa-brands fa-github"></i>
         </a>
-
         <a href="https://medium.com/@lianpeter1225" aria-label="Medium" title="Medium">
           <i class="fa-brands fa-medium"></i>
         </a>
-
         <a href="https://www.youtube.com/@ppowerstation3547" aria-label="YouTube" title="YouTube">
           <i class="fa-brands fa-youtube"></i>
         </a>
-
         <a href="https://www.linkedin.com/in/yishuolian/" aria-label="LinkedIn" title="LinkedIn">
           <i class="fa-brands fa-linkedin"></i>
         </a>
@@ -523,10 +536,33 @@
         </p>
       </div>
 
+      <!-- NEW: Career -->
       <div class="header-row">
-        <div class="section-title">Side hustles</div>
+        <div class="section-title">My Career</div>
+        <div class="date">Past + Current</div>
       </div>
 
+      <div class="controls">
+        <div class="search" role="search">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input id="careerSearchInput" type="text" placeholder="Search career (e.g., co-op, Global Spark, founder)..." />
+        </div>
+
+        <div class="chips" aria-label="Career filters">
+          <button class="chip active" data-career-filter="all" type="button">All</button>
+          <button class="chip" data-career-filter="current" type="button">Current</button>
+          <button class="chip" data-career-filter="past" type="button">Past</button>
+          <button class="chip" data-career-filter="founder" type="button">Founder</button>
+          <button class="chip" data-career-filter="intern" type="button">Co-op / Intern</button>
+          <button class="chip" data-career-filter="volunteer" type="button">Volunteer</button>
+        </div>
+      </div>
+
+      <div class="projects-grid" id="careerGrid"></div>
+
+      <div class="header-row" style="margin-top:22px;">
+        <div class="section-title">Side Hustles</div>
+      </div>
       <div class="projects-grid" id="startupGrid"></div>
 
       <div class="header-row" style="margin-top:22px;">
@@ -605,14 +641,71 @@
       window.addEventListener('resize', update);
     })();
 
-    // --------- EDIT HERE: your startup projects ----------
+    // ---------- IMAGE PLACEHOLDER RULE ----------
+    // Put your images in /external/ and set `image: "external/your.png"`
+    // If `image` is empty, it shows the "IMG" placeholder.
+
+    // --------- EDIT HERE: Career items ----------
+    const careers = [
+      {
+        title: "Software Engineer · Global Spark",
+        subtitle: "Portal design / Hack the Globe + internal apps",
+        when: "Current",
+        desc: "Building and shipping product features, UI, and portal experiences.",
+        image: "",          // e.g. "external/global-spark.png"
+        status: "current",  // current | past
+        categories: ["current"],
+        tags: ["Software", "Web", "Product"]
+      },
+      {
+        title: "Front-End Developer · Experience Driven (Co-op)",
+        subtitle: "Production UI / front-end delivery",
+        when: "Past",
+        desc: "Shipped front-end features in a real team environment, production code + design polish.",
+        image: "",
+        status: "past",
+        categories: ["past", "intern"],
+        tags: ["Co-op", "Front-end"]
+      },
+      {
+        title: "Founder · KrocoPrint",
+        subtitle: "3D printing startup",
+        when: "Past / Ongoing",
+        desc: "Custom gadgets + prototypes via 3D printing; customer-facing ops + product iteration.",
+        image: "",
+        status: "past",
+        categories: ["founder"],
+        tags: ["Startup", "3D Printing"]
+      },
+      {
+        title: "Founder · MasterBlue",
+        subtitle: "Drone company (since 2020)",
+        when: "Past / Ongoing",
+        desc: "Drone sales/distribution and hands-on field experience as a drone pilot.",
+        image: "",
+        status: "past",
+        categories: ["founder"],
+        tags: ["Hardware", "Entrepreneurship"]
+      },
+      {
+        title: "Volunteer · Niagara Health",
+        subtitle: "Hospital volunteering",
+        when: "Past",
+        desc: "Service + support work (patient-facing / operations depending on role).",
+        image: "",
+        status: "past",
+        categories: ["volunteer"],
+        tags: ["Volunteer"]
+      }
+    ];
+
+    // --------- EDIT HERE: your side hustles ----------
     const startupProjects = [
-      
       {
         title: "AI Ventura",
         subtitle: "AI education startup",
-        desc: "Co-founder / marketing lead. Built a mini-startup to teach elementary students AI technologies.",
-        icon: "fa-solid fa-brain",
+        desc: "Co-founder / marketing lead. Built a mini-startup to teach elementary students about AI.",
+        image: "", // "external/ai-ventura.png"
         href: "https://www.linkedin.com/company/ai-ventura",
         tags: ["Startup", "Education"]
       },
@@ -620,7 +713,7 @@
         title: "MasterBlue",
         subtitle: "Drone company",
         desc: "Selling and distributing drones since 2020.",
-        icon: "fa-solid fa-helicopter",
+        image: "",
         href: "https://masterblue.ca/",
         tags: ["Hardware", "Business"]
       },
@@ -628,40 +721,39 @@
         title: "KrocoPrint",
         subtitle: "3D printing startup",
         desc: "Custom gadgets and prototypes through 3D printing.",
-        icon: "fa-solid fa-cube",
+        image: "",
         href: "https://krocoprint.com/",
         tags: ["3D Printing", "Startup"]
       }
     ];
 
-    // --------- EDIT HERE: your hackathon + personal projects ----------
+    // --------- EDIT HERE: projects ----------
     const projects = [
       {
         title: "NewsMapper",
         subtitle: "Maps + news visualization",
         desc: "Platform that connects news stories to an interactive map for context-first discovery.",
-        icon: "fa-solid fa-map",
-        href: "https://confused-lizard-ada.notion.site/NewsMapper-d6bdf72d62ee4da89aeb2e6d34145bc4",
+        image: "",
+        kind: "hackathon",
+        categories: ["fullstack"],
+        links: { demo: "https://confused-lizard-ada.notion.site/NewsMapper-d6bdf72d62ee4da89aeb2e6d34145bc4", github: "" },
         tags: ["Web", "Visualization"]
       },
       {
         title: "Carify",
         subtitle: "Web3 car reputation layer",
-        desc: "Claims + evidence, anchored by cryptographic hashes (Solana integration). Reputation you can audit, not just trust.",
-        icon: "fa-solid fa-car",
+        desc: "Claims + evidence, anchored by cryptographic hashes (Solana). Reputation you can audit.",
+        image: "",
         kind: "hackathon",
         categories: ["web3", "fullstack"],
-        links: {
-          github: "https://github.com/PLIAN78",
-          demo: ""
-        },
+        links: { github: "https://github.com/PLIAN78", demo: "" },
         tags: ["Next.js", "Express", "MongoDB", "Solana", "Gemini"]
       },
       {
         title: "BuildBuddies",
         subtitle: "Collaborative project + networking platform",
-        desc: "Working as a Full-stack dev for a platform for teams, skills onboarding, notifications, and collaboration flows.",
-        icon: "fa-solid fa-people-group",
+        desc: "Full-stack platform for teams, skills onboarding, notifications, and collaboration flows.",
+        image: "",
         kind: "personal",
         categories: ["fullstack"],
         links: { github: "https://github.com/PLIAN78", demo: "" },
@@ -671,7 +763,7 @@
         title: "PuckSense",
         subtitle: "AI hockey tactical analyzer",
         desc: "Computer vision pipeline to analyze hockey play and generate insights from video.",
-        icon: "fa-solid fa-hockey-puck",
+        image: "",
         kind: "hackathon",
         categories: ["ml"],
         links: { github: "https://github.com/PLIAN78", demo: "" },
@@ -681,7 +773,7 @@
         title: "Frefey",
         subtitle: "AI fencing video analysis",
         desc: "Frame extraction + labeling pipeline to detect first action and touches in fencing clips.",
-        icon: "fa-solid fa-person-running",
+        image: "",
         kind: "personal",
         categories: ["ml"],
         links: { github: "https://github.com/PLIAN78", demo: "" },
@@ -691,7 +783,7 @@
         title: "IKEA AR Furniture Placer",
         subtitle: "AR/XR product experience",
         desc: "Place 3D furniture into real space using AR workflows.",
-        icon: "fa-solid fa-vr-cardboard",
+        image: "",
         kind: "personal",
         categories: ["ar"],
         links: { github: "https://github.com/PLIAN78", demo: "" },
@@ -701,7 +793,7 @@
         title: "KnowYouFans",
         subtitle: "YouTube comment summarizer",
         desc: "Summarizes comment sentiment and key themes to understand audience feedback fast.",
-        icon: "fa-solid fa-comments",
+        image: "",
         kind: "hackathon",
         categories: ["ml", "fullstack"],
         links: { github: "https://github.com/PLIAN78", demo: "" },
@@ -710,8 +802,8 @@
       {
         title: "AutoTrust",
         subtitle: "Car trust & reputation concept",
-        desc: "Vertical SaaS-style concept around verifiable car history, trust scoring, and claims workflow.",
-        icon: "fa-solid fa-shield-halved",
+        desc: "Vertical SaaS concept around verifiable car history, trust scoring, and claims workflow.",
+        image: "",
         kind: "personal",
         categories: ["fullstack", "web3"],
         links: { github: "https://github.com/PLIAN78", demo: "" },
@@ -731,33 +823,111 @@
       return node;
     }
 
-    function renderStartup() {
+    function logoNode(src, alt) {
+      const wrapClass = src ? "logo-wrap" : "logo-wrap placeholder";
+      const wrap = el("div", { class: wrapClass, "aria-hidden": "true" }, []);
+      if (src) wrap.appendChild(el("img", { src, alt: alt || "logo" }, []));
+      return wrap;
+    }
+
+    function buildCard({ title, subtitle, desc, image, tags = [], actions = [], metaText = "" }) {
+      return el("div", { class: "project-card" }, [
+        el("div", { class: "project-top" }, [
+          logoNode(image, title + " logo"),
+          el("div", {}, [
+            el("div", { class: "project-title" }, [title]),
+            el("div", { class: "project-sub" }, [subtitle + (metaText ? (" · " + metaText) : "")]),
+          ])
+        ]),
+        el("div", { class: "project-desc" }, [desc]),
+        el("div", { class: "tags" }, (tags || []).map(t => el("span", { class: "tag" }, [t]))),
+        el("div", { class: "project-actions" }, actions.length ? actions : [
+          el("span", { class: "btn", style: "opacity:0.75; cursor:default;" }, [
+            el("i", { class: "fa-solid fa-hourglass", "aria-hidden":"true" }),
+            "Links soon"
+          ])
+        ])
+      ]);
+    }
+
+    function renderCareer({ filter = "all", query = "" } = {}) {
+      const grid = document.getElementById("careerGrid");
+      if (!grid) return;
+      grid.innerHTML = "";
+
+      const q = query.trim().toLowerCase();
+
+      const filtered = careers.filter(c => {
+        const matchesFilter =
+          filter === "all" ||
+          (filter === "current" && c.status === "current") ||
+          (filter === "past" && c.status === "past") ||
+          (c.categories || []).includes(filter);
+
+        const hay = [
+          c.title, c.subtitle, c.desc,
+          (c.tags || []).join(" "),
+          (c.categories || []).join(" "),
+          c.status, c.when
+        ].join(" ").toLowerCase();
+
+        const matchesQuery = !q || hay.includes(q);
+        return matchesFilter && matchesQuery;
+      });
+
+      filtered.forEach(c => {
+        const actions = [];
+        if (c.href) {
+          actions.push(
+            el("a", { class: "btn primary", href: c.href, target: "_blank", rel: "noreferrer" }, [
+              el("i", { class: "fa-solid fa-arrow-up-right-from-square", "aria-hidden":"true" }),
+              "Open"
+            ])
+          );
+        }
+
+        grid.appendChild(buildCard({
+          title: c.title,
+          subtitle: c.subtitle,
+          desc: c.desc,
+          image: c.image,
+          tags: c.tags || [],
+          actions,
+          metaText: c.when || ""
+        }));
+      });
+
+      if (filtered.length === 0) {
+        grid.appendChild(
+          el("div", { class: "project-card", style: "grid-column: 1 / -1; text-align:center;" }, [
+            el("div", { class: "project-title" }, ["No matches"]),
+            el("div", { class: "project-sub" }, ["Try a different filter or search term."])
+          ])
+        );
+      }
+    }
+
+    function renderSideHustles() {
       const grid = document.getElementById("startupGrid");
       if (!grid) return;
       grid.innerHTML = "";
 
       startupProjects.forEach(p => {
-        const card = el("div", { class: "project-card" }, [
-          el("div", { class: "project-top" }, [
-            el("div", { class: "project-icon", "aria-hidden": "true" }, [
-              el("i", { class: p.icon })
-            ]),
-            el("div", {}, [
-              el("div", { class: "project-title" }, [p.title]),
-              el("div", { class: "project-sub" }, [p.subtitle]),
-            ])
-          ]),
-          el("div", { class: "project-desc" }, [p.desc]),
-          el("div", { class: "tags" }, p.tags.map(t => el("span", { class: "tag" }, [t]))),
-          el("div", { class: "project-actions" }, [
-            el("a", { class: "btn primary", href: p.href, target: "_blank", rel: "noreferrer" }, [
-              el("i", { class: "fa-solid fa-arrow-up-right-from-square", "aria-hidden": "true" }),
-              "Open"
-            ])
+        const actions = [
+          el("a", { class: "btn primary", href: p.href, target: "_blank", rel: "noreferrer" }, [
+            el("i", { class: "fa-solid fa-arrow-up-right-from-square", "aria-hidden":"true" }),
+            "Open"
           ])
-        ]);
+        ];
 
-        grid.appendChild(card);
+        grid.appendChild(buildCard({
+          title: p.title,
+          subtitle: p.subtitle,
+          desc: p.desc,
+          image: p.image,
+          tags: p.tags || [],
+          actions
+        }));
       });
     }
 
@@ -807,30 +977,19 @@
           );
         }
 
-        const card = el("div", { class: "project-card" }, [
-          el("div", { class: "project-top" }, [
-            el("div", { class: "project-icon", "aria-hidden": "true" }, [
-              el("i", { class: p.icon })
-            ]),
-            el("div", {}, [
-              el("div", { class: "project-title" }, [p.title]),
-              el("div", { class: "project-sub" }, [p.subtitle + " · " + (p.kind === "hackathon" ? "Hackathon" : "Personal")]),
-            ])
-          ]),
-          el("div", { class: "project-desc" }, [p.desc]),
-          el("div", { class: "tags" }, [
-            ...((p.tags || []).map(t => el("span", { class: "tag" }, [t]))),
-            ...(p.categories || []).map(c => el("span", { class: "tag" }, [c.toUpperCase()]))
-          ]),
-          el("div", { class: "project-actions" }, actions.length ? actions : [
-            el("span", { class: "btn", style: "opacity:0.75; cursor:default;" }, [
-              el("i", { class: "fa-solid fa-hourglass", "aria-hidden":"true" }),
-              "Links soon"
-            ])
-          ])
-        ]);
+        // categories as tags too
+        const categoryTags = (p.categories || []).map(c => (String(c).toUpperCase()));
+        const allTags = [...(p.tags || []), ...categoryTags];
 
-        grid.appendChild(card);
+        grid.appendChild(buildCard({
+          title: p.title,
+          subtitle: p.subtitle,
+          desc: p.desc,
+          image: p.image,
+          tags: allTags,
+          actions,
+          metaText: (p.kind === "hackathon" ? "Hackathon" : "Personal")
+        }));
       });
 
       if (filtered.length === 0) {
@@ -843,27 +1002,46 @@
       }
     }
 
-    // Filters + search
-    (function setupFilters() {
-      renderStartup();
+    // Setup: filters + search
+    (function setup() {
+      renderCareer({ filter: "all", query: "" });
+      renderSideHustles();
       renderProjects({ filter: "all", query: "" });
 
-      const chips = Array.from(document.querySelectorAll(".chip"));
-      const input = document.getElementById("searchInput");
+      // Career filters
+      const careerChips = Array.from(document.querySelectorAll(".chip[data-career-filter]"));
+      const careerInput = document.getElementById("careerSearchInput");
+      let activeCareerFilter = "all";
 
-      let activeFilter = "all";
-
-      chips.forEach(chip => {
+      careerChips.forEach(chip => {
         chip.addEventListener("click", () => {
-          chips.forEach(c => c.classList.remove("active"));
+          careerChips.forEach(c => c.classList.remove("active"));
           chip.classList.add("active");
-          activeFilter = chip.getAttribute("data-filter") || "all";
-          renderProjects({ filter: activeFilter, query: input?.value || "" });
+          activeCareerFilter = chip.getAttribute("data-career-filter") || "all";
+          renderCareer({ filter: activeCareerFilter, query: careerInput?.value || "" });
         });
       });
 
-      input?.addEventListener("input", () => {
-        renderProjects({ filter: activeFilter, query: input.value || "" });
+      careerInput?.addEventListener("input", () => {
+        renderCareer({ filter: activeCareerFilter, query: careerInput.value || "" });
+      });
+
+      // Project filters
+      const projectChips = Array.from(document.querySelectorAll(".chip[data-filter]"));
+      const projectInput = document.getElementById("searchInput");
+      let activeProjectFilter = "all";
+
+      projectChips.forEach(chip => {
+        chip.addEventListener("click", () => {
+          projectChips.forEach(c => c.classList.remove("active"));
+          chip.classList.add("active");
+          activeProjectFilter = chip.getAttribute("data-filter") || "all";
+          renderProjects({ filter: activeProjectFilter, query: projectInput?.value || "" });
+        });
+      });
+
+      projectInput?.addEventListener("input", () => {
+        renderProjects({ filter: activeProjectFilter, query: projectInput.value || "" });
       });
     })();
   </script>
