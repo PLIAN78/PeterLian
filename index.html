@@ -402,12 +402,11 @@
       color:#fff;
       border-color: rgba(13,38,48,0.35);
     }
-   .btn.primary:hover{
-  background: var(--mint);
-  border-color: var(--mint);
-  color: var(--ink);
-}
-
+    .btn.primary:hover{
+      background: var(--mint);
+      border-color: var(--mint);
+      color: var(--ink);
+    }
 
     /* Contact */
     .contact-info form{ display:flex; flex-direction:column; gap:12px; }
@@ -466,6 +465,147 @@
 
     @media (max-width: 768px){
       .header-row{ flex-direction:column; align-items:flex-start; }
+    }
+
+    /* =======================
+       FENCING MINI GAME STYLES
+       ======================= */
+    .fence-game-card{
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(13,38,48,0.14);
+      border-radius: 18px;
+      overflow:hidden;
+      box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+      position:relative;
+    }
+    .fence-game-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      padding:12px 14px;
+      border-bottom:1px solid rgba(13,38,48,0.10);
+      background:
+        linear-gradient(135deg, rgba(38,186,215,0.12), rgba(168,230,207,0.10)),
+        rgba(255,255,255,0.55);
+    }
+    .fence-game-title{
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+      color: var(--ink);
+    }
+    .fence-game-title b{ font-size:14px; }
+    .fence-game-title span{ font-size:12px; color: rgba(13,38,48,0.70); }
+
+    .fence-hud{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .fence-pill{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(13,38,48,0.14);
+      background: rgba(255,255,255,0.72);
+      font-size:12px;
+      color: var(--ink);
+      white-space:nowrap;
+    }
+    .fence-pill b{ color: var(--bg1); }
+
+    .fence-arena{
+      background:
+        radial-gradient(900px 260px at 50% 70%, rgba(38,186,215,0.14), transparent 60%),
+        linear-gradient(180deg, rgba(13,38,48,0.06), transparent 45%),
+        rgba(6,56,66,0.04);
+      padding:12px;
+    }
+    #fenceCanvas{
+      width:100%;
+      height:320px;
+      display:block;
+      border-radius:14px;
+      border:1px solid rgba(13,38,48,0.12);
+      background: rgba(255,255,255,0.35);
+    }
+
+    .fence-bottom{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      padding:12px 14px;
+      border-top:1px solid rgba(13,38,48,0.10);
+    }
+    .fence-controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .fence-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:800;
+      font-size:13px;
+      cursor:pointer;
+      border:1px solid rgba(13,38,48,0.14);
+      background: rgba(255,255,255,0.85);
+      color: var(--ink);
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      user-select:none;
+    }
+    .fence-btn:hover{ transform: translateY(-1px); box-shadow: 0 12px 18px rgba(0,0,0,0.10); }
+    .fence-btn.primary{
+      background: var(--bg1);
+      color:#fff;
+      border-color: rgba(13,38,48,0.35);
+    }
+    .fence-btn.primary:hover{
+      background: rgba(38,186,215,0.22);
+      border-color: rgba(38,186,215,0.45);
+      color: var(--ink);
+    }
+
+    .fence-log{
+      flex:1;
+      min-width:240px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      color: rgba(13,38,48,0.75);
+      font-size:12px;
+    }
+    .fence-dot{
+      width:10px;height:10px;border-radius:999px;
+      background: rgba(13,38,48,0.35);
+      box-shadow: 0 0 0 4px rgba(13,38,48,0.10);
+      flex:0 0 auto;
+    }
+    .fence-dot.ok{ background: #2ecc71; box-shadow: 0 0 0 4px rgba(46,204,113,0.12); }
+    .fence-dot.warn{ background: #f39c12; box-shadow: 0 0 0 4px rgba(243,156,18,0.12); }
+    .fence-dot.bad{ background: #ff4d6d; box-shadow: 0 0 0 4px rgba(255,77,109,0.12); }
+
+    .fence-kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(13,38,48,0.14);
+      background: rgba(255,255,255,0.75);
+      color: rgba(13,38,48,0.85);
+      white-space:nowrap;
     }
   </style>
 </head>
@@ -579,6 +719,60 @@
 
       <div class="projects-grid" id="projectGrid"></div>
 
+      <!-- =======================
+           FENCING MINI GAME (NEW)
+           ======================= -->
+      <div class="header-row" style="margin-top:22px;">
+        <div class="section-title">Fencing Mini-Game</div>
+      </div>
+
+      <div class="panel">
+        <div class="fence-game-card" role="region" aria-label="Fencing mini game">
+          <div class="fence-game-top">
+            <div class="fence-game-title">
+              <b>⚔️ Reaction Duel</b>
+              <span>
+                Lunge: <span class="fence-kbd">Space</span> · Parry: <span class="fence-kbd">F</span> · First to 5
+              </span>
+            </div>
+            <div class="fence-hud">
+              <div class="fence-pill">You <b id="fgPScore">0</b></div>
+              <div class="fence-pill">AI <b id="fgAScore">0</b></div>
+              <div class="fence-pill">Mode <b id="fgMode">Ready</b></div>
+              <div class="fence-pill">Streak <b id="fgStreak">0</b></div>
+            </div>
+          </div>
+
+          <div class="fence-arena">
+            <canvas id="fenceCanvas" width="1200" height="720"></canvas>
+          </div>
+
+          <div class="fence-bottom">
+            <div class="fence-controls">
+              <button class="fence-btn primary" id="fgLungeBtn">
+                <i class="fa-solid fa-bolt" aria-hidden="true"></i> Lunge <span class="fence-kbd">Space</span>
+              </button>
+              <button class="fence-btn" id="fgParryBtn">
+                <i class="fa-solid fa-shield" aria-hidden="true"></i> Parry <span class="fence-kbd">F</span>
+              </button>
+              <button class="fence-btn" id="fgResetBtn">
+                <i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Reset
+              </button>
+            </div>
+
+            <div class="fence-log">
+              <span id="fgDot" class="fence-dot"></span>
+              <span id="fgLog">
+                Press <span class="fence-kbd">Space</span> to lunge. If Red commits, parry <span class="fence-kbd">F</span> then riposte with <span class="fence-kbd">Space</span>.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- =======================
+           END FENCING MINI GAME
+           ======================= -->
+
       <!-- Contact -->
       <div class="header-row" style="margin-top:22px;">
         <div class="section-title">Contact</div>
@@ -649,7 +843,7 @@
         status: "current",
         categories: ["current"],
         tags: ["Software", "Web", "Product", "Full Stack"],
-        href: "https://www.buildbane.com/"  // <-- change to company/job link
+        href: "https://www.buildbane.com/"
       },
       {
         title: "Software Engineer · Global Spark",
@@ -660,7 +854,7 @@
         status: "current",
         categories: ["current"],
         tags: ["Software", "Web", "Product"],
-        href: "https://globalspark.world/"  // <-- change to Global Spark / role link if you have one
+        href: "https://globalspark.world/"
       },
       {
         title: "Front-End Developer · Experience Driven (Co-op)",
@@ -671,7 +865,7 @@
         status: "past",
         categories: ["past", "intern"],
         tags: ["Co-op", "Front-end"],
-        href: "https://experiencedriven.ca/"  // <-- change to company / portfolio / post
+        href: "https://experiencedriven.ca/"
       }
     ];
 
@@ -704,8 +898,6 @@
     ];
 
     // --------- EDIT HERE: projects ----------
-    // ✅ “Demo” button will show for ALL projects.
-    // Rule: put a URL in `links.demo` for each project (can be Devpost, Notion, YouTube, live site, etc.)
     const projects = [
       {
         title: "NewsMapper",
@@ -728,7 +920,7 @@
         kind: "hackathon",
         categories: ["web3", "fullstack"],
         links: {
-          demo: "https://devpost.com/software/carify-5vx3cb",  
+          demo: "https://devpost.com/software/carify-5vx3cb",
           github: "https://github.com/PLIAN78/Carify"
         },
         tags: ["Next.js", "Express", "MongoDB", "Solana", "Gemini"]
@@ -741,7 +933,7 @@
         kind: "hackathon",
         categories: ["ml"],
         links: {
-          demo: "https://devpost.com/software/pucksense", 
+          demo: "https://devpost.com/software/pucksense",
           github: "https://github.com/PLIAN78/PuckSense"
         },
         tags: ["OpenCV", "Python", "CV", "LLM"]
@@ -754,7 +946,7 @@
         kind: "personal",
         categories: ["ml"],
         links: {
-          demo: "https://github.com/PLIAN78", 
+          demo: "https://github.com/PLIAN78",
           github: "https://github.com/PLIAN78/Freffy"
         },
         tags: ["OpenCV", "Python", "Sports CV"]
@@ -767,7 +959,7 @@
         kind: "personal",
         categories: ["ar"],
         links: {
-          demo: "https://github.com/PLIAN78", // <-- replace with demo video
+          demo: "https://github.com/PLIAN78",
           github: "https://github.com/PLIAN78/Furniture-project-"
         },
         tags: ["Unity", "ARCore", "3D"]
@@ -793,7 +985,7 @@
         kind: "hackathon",
         categories: ["fullstack", "web3"],
         links: {
-          demo: "https://devpost.com/software/standard-hardware-challenge-autotrust", 
+          demo: "https://devpost.com/software/standard-hardware-challenge-autotrust",
           github: "https://github.com/PLIAN78/autotrust"
         },
         tags: ["Node", "MongoDB", "Product Design"]
@@ -806,7 +998,7 @@
         kind: "hackathon",
         categories: ["fullstack","LLM"],
         links: {
-          demo: "https://goon-hack-7oj42e1en-lianpeter1225-gmailcoms-projects.vercel.app/", 
+          demo: "https://goon-hack-7oj42e1en-lianpeter1225-gmailcoms-projects.vercel.app/",
           github: "https://github.com/PLIAN78/GOONHack"
         },
         tags: ["Node", "MongoDB", "Product Design"]
@@ -873,7 +1065,6 @@
       });
 
       filtered.forEach(c => {
-        // ✅ Always render "Open" for career (even if you forget a link)
         const href = c.href || "https://www.linkedin.com/in/yishuolian/";
         const actions = [
           el("a", { class: "btn primary", href, target: "_blank", rel: "noreferrer" }, [
@@ -955,7 +1146,6 @@
       filtered.forEach(p => {
         const actions = [];
 
-        // ✅ Always show Demo button (fallback if missing)
         const demoHref = (p.links && p.links.demo) ? p.links.demo : (p.links && p.links.github ? p.links.github : "https://github.com/PLIAN78");
         actions.push(
           el("a", { class: "btn primary", href: demoHref, target: "_blank", rel: "noreferrer" }, [
@@ -1035,6 +1225,367 @@
       projectInput?.addEventListener("input", () => {
         renderProjects({ filter: activeProjectFilter, query: projectInput.value || "" });
       });
+    })();
+
+    /* =======================
+       FENCING MINI GAME LOGIC
+       ======================= */
+    (function fencingGame(){
+      const canvas = document.getElementById("fenceCanvas");
+      const ctx = canvas?.getContext("2d");
+      if (!canvas || !ctx) return;
+
+      const pScoreEl = document.getElementById("fgPScore");
+      const aScoreEl = document.getElementById("fgAScore");
+      const modeEl = document.getElementById("fgMode");
+      const streakEl = document.getElementById("fgStreak");
+      const logEl = document.getElementById("fgLog");
+      const dotEl = document.getElementById("fgDot");
+
+      const btnLunge = document.getElementById("fgLungeBtn");
+      const btnParry = document.getElementById("fgParryBtn");
+      const btnReset = document.getElementById("fgResetBtn");
+
+      const S = {
+        pScore:0, aScore:0, streak:0,
+        phase:"idle", // idle | warning | parry_window | riposte_window | resolve | gameover
+        warningAt:0,
+        aiCommitAt:0,
+        parryDeadline:0,
+        riposteDeadline:0,
+
+        pX:260, aX:940,
+        pArm:0, aArm:0,
+        pLunge:0, aLunge:0,
+        parryArmed:false,
+      };
+
+      function rand(min,max){ return Math.random()*(max-min)+min; }
+
+      function setMode(t){ modeEl.textContent = t; }
+      function setDot(tone){
+        dotEl.className = "fence-dot" + (tone==="good"?" ok":tone==="warn"?" warn":tone==="bad"?" bad":"");
+      }
+      function setLog(html, tone="neutral"){
+        logEl.innerHTML = html;
+        setDot(tone==="neutral" ? "" : tone);
+      }
+
+      function resetRound(msg="En garde… watch Red."){
+        S.phase = "idle";
+        S.parryArmed = false;
+        S.pArm=0; S.aArm=0;
+        S.pLunge=0; S.aLunge=0;
+
+        const now = performance.now();
+        const think = rand(650, 1250);
+        const willAttack = Math.random() < 0.55;
+        S.warningAt = now + think;
+        S.aiCommitAt = willAttack ? S.warningAt + rand(450, 950) : Infinity;
+
+        setMode("Ready");
+        setLog(msg, "neutral");
+      }
+
+      function hardReset(){
+        S.pScore=0; S.aScore=0; S.streak=0;
+        pScoreEl.textContent="0";
+        aScoreEl.textContent="0";
+        streakEl.textContent="0";
+        setMode("Ready");
+        setLog(`Press <span class="fence-kbd">Space</span> to lunge. If Red commits, parry <span class="fence-kbd">F</span> then riposte with <span class="fence-kbd">Space</span>.`, "neutral");
+        resetRound("");
+      }
+
+      function endGame(){
+        S.phase="gameover";
+        setMode("Game Over");
+        const win = S.pScore > S.aScore;
+        setLog(win ? `🏆 You win ${S.pScore}-${S.aScore}.` : `💀 AI wins ${S.aScore}-${S.pScore}.`, win ? "good" : "bad");
+      }
+
+      function scorePoint(who){
+        if (who==="player"){ S.pScore++; S.streak++; }
+        else { S.aScore++; S.streak=0; }
+
+        pScoreEl.textContent = String(S.pScore);
+        aScoreEl.textContent = String(S.aScore);
+        streakEl.textContent = String(S.streak);
+
+        if (S.pScore>=5 || S.aScore>=5) endGame();
+        else resetRound("");
+      }
+
+      function onParry(){
+        if (S.phase !== "parry_window") {
+          setLog(`Parry only when Red commits.`, "warn");
+          return;
+        }
+        const now = performance.now();
+        if (now <= S.parryDeadline) {
+          S.parryArmed = true;
+          S.phase = "riposte_window";
+          S.riposteDeadline = now + 800;
+          S.pArm = 1;
+          setMode("Riposte!");
+          setLog(`Nice parry. Riposte with <span class="fence-kbd">Space</span>!`, "good");
+        } else {
+          S.phase = "resolve";
+          setMode("Hit");
+          S.aLunge = 1;
+          setLog(`Too late — Red hits.`, "bad");
+          setTimeout(() => scorePoint("ai"), 420);
+        }
+      }
+
+      function onLunge(){
+        if (S.phase === "gameover") return;
+
+        const now = performance.now();
+
+        // riposte
+        if (S.phase === "riposte_window") {
+          if (now <= S.riposteDeadline) {
+            S.phase="resolve";
+            S.pLunge=1;
+            setMode("Touch!");
+            setLog(`Clean riposte — touch!`, "good");
+            setTimeout(() => scorePoint("player"), 420);
+          } else {
+            S.phase="resolve";
+            setMode("Missed");
+            setLog(`Riposte window missed — Red recovers.`, "bad");
+            setTimeout(() => scorePoint("ai"), 420);
+          }
+          return;
+        }
+
+        // if AI is attacking and you didn't parry
+        if (S.phase === "parry_window") {
+          S.phase="resolve";
+          S.pLunge=1; S.aLunge=1;
+          setMode("Hit");
+          setLog(`Red was committing — you get hit.`, "bad");
+          setTimeout(() => scorePoint("ai"), 420);
+          return;
+        }
+
+        const dangerSoon = (S.aiCommitAt - now) < 220;
+
+        if (S.aiCommitAt !== Infinity && now >= S.aiCommitAt - 200 && now <= S.aiCommitAt + 120) {
+          S.phase="resolve";
+          S.pLunge=1; S.aLunge=1;
+          setMode("Countered");
+          setLog(`You lunged into Red’s timing — counter-touch.`, "bad");
+          setTimeout(() => scorePoint("ai"), 420);
+          return;
+        }
+
+        if (dangerSoon) {
+          const win = Math.random() < 0.35;
+          S.phase="resolve";
+          S.pLunge=1; S.aLunge=0.85;
+          if (win) {
+            setMode("Touch!");
+            setLog(`Bold lunge — you sneak the touch.`, "good");
+            setTimeout(() => scorePoint("player"), 420);
+          } else {
+            setMode("Stopped");
+            setLog(`Red reads it — you get stopped.`, "bad");
+            setTimeout(() => scorePoint("ai"), 420);
+          }
+          return;
+        }
+
+        const win = Math.random() < 0.62;
+        S.phase="resolve";
+        S.pLunge=1;
+        if (win) {
+          setMode("Touch!");
+          setLog(`Nice timing — touch!`, "good");
+          setTimeout(() => scorePoint("player"), 420);
+        } else {
+          setMode("Parried");
+          S.aArm=1;
+          setLog(`Red parries your attack.`, "bad");
+          setTimeout(() => scorePoint("ai"), 420);
+        }
+      }
+
+      function roundRect(x,y,w,h,r){
+        const rr = Math.min(r, w/2, h/2);
+        ctx.beginPath();
+        ctx.moveTo(x+rr, y);
+        ctx.lineTo(x+w-rr, y);
+        ctx.quadraticCurveTo(x+w, y, x+w, y+rr);
+        ctx.lineTo(x+w, y+h-rr);
+        ctx.quadraticCurveTo(x+w, y+h, x+w-rr, y+h);
+        ctx.lineTo(x+rr, y+h);
+        ctx.quadraticCurveTo(x, y+h, x, y+h-rr);
+        ctx.lineTo(x, y+rr);
+        ctx.quadraticCurveTo(x, y, x+rr, y);
+        ctx.closePath();
+      }
+
+      function drawFencer(x, y, dir, bodyRGBA, armRaise01){
+        ctx.save();
+        ctx.translate(x, y);
+
+        // feet
+        ctx.fillStyle = "rgba(13,38,48,0.18)";
+        ctx.fillRect(-40*dir, -6, 40*dir, 10);
+        ctx.fillRect(10*dir, -6, 42*dir, 10);
+
+        // legs
+        ctx.strokeStyle = "rgba(13,38,48,0.18)";
+        ctx.lineWidth = 10;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(-10*dir, -6);
+        ctx.lineTo(-22*dir, -48);
+        ctx.lineTo(-4*dir, -92);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(10*dir, -6);
+        ctx.lineTo(28*dir, -54);
+        ctx.lineTo(8*dir, -98);
+        ctx.stroke();
+
+        // torso
+        ctx.fillStyle = bodyRGBA;
+        roundRect(-26, -160, 52, 86, 18);
+        ctx.fill();
+
+        // mask
+        ctx.fillStyle = "rgba(255,255,255,0.92)";
+        ctx.beginPath();
+        ctx.arc(0, -182, 26, 0, Math.PI*2);
+        ctx.fill();
+        ctx.fillStyle = "rgba(0,0,0,0.35)";
+        ctx.beginPath();
+        ctx.arc(6*dir, -182, 16, -0.2, Math.PI*2-0.2);
+        ctx.fill();
+
+        // arm
+        ctx.strokeStyle = "rgba(13,38,48,0.55)";
+        ctx.lineWidth = 10;
+        ctx.lineCap = "round";
+        const armRaise = armRaise01 * 24;
+        ctx.beginPath();
+        ctx.moveTo(12*dir, -140);
+        ctx.lineTo(48*dir, -132 - armRaise);
+        ctx.stroke();
+
+        ctx.restore();
+      }
+
+      function drawBlade(x, y, dir, armRaise01, bladeRGBA){
+        ctx.save();
+        ctx.translate(x, y);
+
+        const armRaise = armRaise01 * 24;
+        const x0 = 48*dir;
+        const y0 = -132 - armRaise;
+
+        ctx.strokeStyle = bladeRGBA;
+        ctx.lineWidth = 5;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(x0, y0);
+        ctx.lineTo(x0 + 220*dir, y0 - 24);
+        ctx.stroke();
+
+        ctx.fillStyle = "rgba(255,255,255,0.92)";
+        ctx.beginPath();
+        ctx.arc(x0 + 220*dir, y0 - 24, 6, 0, Math.PI*2);
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      function draw(){
+        const w = canvas.width, h = canvas.height;
+        ctx.clearRect(0,0,w,h);
+
+        // piste
+        const baseY = h*0.62;
+        ctx.fillStyle = "rgba(13,38,48,0.10)";
+        ctx.fillRect(0, baseY, w, 6);
+
+        // center
+        ctx.fillStyle = "rgba(13,38,48,0.10)";
+        ctx.fillRect(w/2 - 2, h*0.52, 4, h*0.24);
+
+        const pX = S.pX + S.pLunge * 90;
+        const aX = S.aX - S.aLunge * 90;
+
+        // fighters
+        drawFencer(pX, baseY, 1, "rgba(38,186,215,0.95)", S.pArm);
+        drawFencer(aX, baseY, -1, "rgba(255,77,109,0.90)", S.aArm);
+
+        // blades
+        drawBlade(pX, baseY, 1, S.pArm, "rgba(38,186,215,0.75)");
+        drawBlade(aX, baseY, -1, S.aArm, "rgba(255,77,109,0.65)");
+
+        // small overlay hint
+        ctx.globalAlpha = 0.92;
+        ctx.fillStyle = "rgba(255,255,255,0.65)";
+        ctx.fillRect(18, 18, 520, 70);
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = "rgba(13,38,48,0.92)";
+        ctx.font = "28px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("Space: Lunge / Riposte    F: Parry", 36, 58);
+      }
+
+      function tick(){
+        const now = performance.now();
+
+        if (S.phase !== "gameover") {
+          if (S.phase === "idle" && now >= S.warningAt) {
+            S.phase = "warning";
+            setMode("Watch");
+            setLog(`Red is twitchy…`, "warn");
+          }
+
+          if ((S.phase === "warning" || S.phase === "idle") && now >= S.aiCommitAt) {
+            S.phase = "parry_window";
+            S.parryDeadline = now + 440;
+            setMode("Parry!");
+            setLog(`Red commits — parry with <span class="fence-kbd">F</span>!`, "warn");
+            S.aLunge = 1;
+          }
+
+          // if they committed and you did nothing
+          if (S.phase === "parry_window" && now > S.parryDeadline) {
+            S.phase = "resolve";
+            setMode("Hit");
+            setLog(`No parry — Red hits.`, "bad");
+            setTimeout(() => scorePoint("ai"), 420);
+          }
+
+          // decay anim
+          S.pLunge *= 0.90;
+          S.aLunge *= 0.90;
+          S.pArm *= 0.88;
+          S.aArm *= 0.88;
+        }
+
+        draw();
+        requestAnimationFrame(tick);
+      }
+
+      // events
+      window.addEventListener("keydown", (e) => {
+        if (e.code === "Space") { e.preventDefault(); onLunge(); }
+        if (e.key.toLowerCase() === "f") { onParry(); }
+      });
+      btnLunge?.addEventListener("click", onLunge);
+      btnParry?.addEventListener("click", onParry);
+      btnReset?.addEventListener("click", hardReset);
+
+      hardReset();
+      requestAnimationFrame(tick);
     })();
   </script>
 </body>
