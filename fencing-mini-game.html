@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fencing Mini Game</title>
+  <style>
+    :root{
+      --bg:#07171b;
+      --panel:#0d2630;
+      --teal:#26bad7;
+      --muted:#5a7c81;
+      --white:#ffffff;
+      --danger:#ff4d6d;
+      --ok:#4dffb5;
+    }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1000px 600px at 50% 10%, rgba(38,186,215,0.15), transparent 60%),
+                  linear-gradient(180deg, #041215, var(--bg));
+      color: var(--white);
+      display:flex;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .wrap{
+      width:min(920px, 100%);
+      display:grid;
+      gap:14px;
+    }
+
+    .card{
+      background: rgba(13,38,48,0.75);
+      border: 1px solid rgba(38,186,215,0.25);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      overflow:hidden;
+    }
+
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 16px;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .title{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .title h1{
+      margin:0;
+      font-size:16px;
+      letter-spacing:0.2px;
+    }
+    .title p{
+      margin:0;
+      font-size:12px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .hud{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      padding:8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.18);
+      font-size:12px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      white-space:nowrap;
+    }
+    .pill b{ color: var(--teal); font-weight:700; }
+
+    .arena{
+      position:relative;
+      height: 360px;
+      background:
+        linear-gradient(90deg, rgba(38,186,215,0.08), transparent 25%, transparent 75%, rgba(255,77,109,0.06)),
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 30%),
+        radial-gradient(800px 260px at 50% 80%, rgba(38,186,215,0.12), transparent 60%),
+        #051419;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+    }
+
+    canvas{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+
+    .bottom{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      padding:14px 16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.22);
+      color: var(--white);
+      padding:10px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-weight:650;
+      transition: 0.15s transform, 0.15s background, 0.15s border;
+      user-select:none;
+    }
+    button:hover{ transform: translateY(-1px); border-color: rgba(38,186,215,0.5); }
+    button.primary{
+      background: rgba(38,186,215,0.22);
+      border-color: rgba(38,186,215,0.45);
+    }
+    button.danger{
+      background: rgba(255,77,109,0.16);
+      border-color: rgba(255,77,109,0.35);
+    }
+
+    .log{
+      flex:1;
+      min-width: 240px;
+      font-size:12px;
+      color: rgba(255,255,255,0.75);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .statusDot{
+      width:10px;height:10px;border-radius:999px;
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.06);
+      flex:0 0 auto;
+    }
+    .statusDot.ok{ background: var(--ok); box-shadow: 0 0 0 4px rgba(77,255,181,0.12); }
+    .statusDot.warn{ background: #ffd166; box-shadow: 0 0 0 4px rgba(255,209,102,0.12); }
+    .statusDot.bad{ background: var(--danger); box-shadow: 0 0 0 4px rgba(255,77,109,0.12); }
+
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.25);
+      color: rgba(255,255,255,0.85);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="top">
+        <div class="title">
+          <h1>⚔️ Fencing Reaction Duel</h1>
+          <p>Parry-riposte when Red commits. Or catch them with a clean lunge.</p>
+        </div>
+
+        <div class="hud">
+          <div class="pill">You <b id="pScore">0</b></div>
+          <div class="pill">AI <b id="aScore">0</b></div>
+          <div class="pill">Mode <b id="modeLabel">Ready</b></div>
+          <div class="pill">Streak <b id="streakLabel">0</b></div>
+        </div>
+      </div>
+
+      <div class="arena">
+        <canvas id="c" width="1200" height="720" aria-label="Fencing canvas"></canvas>
+      </div>
+
+      <div class="bottom">
+        <div class="controls">
+          <button class="primary" id="btnLunge">Lunge <span class="kbd">Space</span></button>
+          <button id="btnParry">Parry <span class="kbd">F</span></button>
+          <button class="danger" id="btnReset">Reset</button>
+        </div>
+
+        <div class="log">
+          <span id="dot" class="statusDot"></span>
+          <span id="logText">Press <span class="kbd">Space</span> to lunge. If the AI commits, parry with <span class="kbd">F</span> then riposte with <span class="kbd">Space</span>.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+(() => {
+  /*** Canvas setup ***/
+  const canvas = document.getElementById("c");
+  const ctx = canvas.getContext("2d");
+
+  const pScoreEl = document.getElementById("pScore");
+  const aScoreEl = document.getElementById("aScore");
+  const modeLabel = document.getElementById("modeLabel");
+  const streakLabel = document.getElementById("streakLabel");
+  const logText = document.getElementById("logText");
+  const dot = document.getElementById("dot");
+
+  const btnLunge = document.getElementById("btnLunge");
+  const btnParry = document.getElementById("btnParry");
+  const btnReset = document.getElementById("btnReset");
+
+  /*** Game state ***/
+  const state = {
+    pScore: 0,
+    aScore: 0,
+    streak: 0,
+    round: 0,
+    phase: "idle", // idle | warning | ai_attack | parry_window | riposte_window | resolve | gameover
+    message: "",
+    lastOutcome: "neutral", // good | warn | bad | neutral
+
+    // timings
+    t0: performance.now(),
+    aiCommitAt: 0,
+    warningAt: 0,
+    parryDeadline: 0,
+    riposteDeadline: 0,
+
+    // positions
+    pX: 260,
+    aX: 940,
+    pArm: 0,
+    aArm: 0,
+    pLunge: 0,
+    aLunge: 0,
+
+    // inputs
+    parryPressedAt: null,
+    lungePressedAt: null,
+    parryArmed: false, // set true when parry succeeds
+  };
+
+  function setLog(text, tone="neutral"){
+    logText.innerHTML = text;
+    state.lastOutcome = tone;
+    dot.className = "statusDot" + (
+      tone === "good" ? " ok" :
+      tone === "warn" ? " warn" :
+      tone === "bad"  ? " bad" : ""
+    );
+  }
+
+  function setMode(label){ modeLabel.textContent = label; }
+
+  function resetRound(reason=""){
+    state.round++;
+    state.phase = "idle";
+    state.parryPressedAt = null;
+    state.lungePressedAt = null;
+    state.parryArmed = false;
+    state.pArm = 0; state.aArm = 0;
+    state.pLunge = 0; state.aLunge = 0;
+
+    // schedule next AI behavior
+    const now = performance.now();
+    const think = rand(600, 1200);
+    const willAttack = Math.random() < 0.55; // AI commits a bit more than half
+    state.warningAt = now + think;
+    state.aiCommitAt = willAttack ? state.warningAt + rand(450, 900) : Infinity;
+
+    if (reason) {
+      setLog(reason, "neutral");
+    } else {
+      setLog(`En garde… watch Red.`, "neutral");
+    }
+    setMode("Ready");
+  }
+
+  function hardReset(){
+    state.pScore = 0;
+    state.aScore = 0;
+    state.streak = 0;
+    pScoreEl.textContent = "0";
+    aScoreEl.textContent = "0";
+    streakLabel.textContent = "0";
+    state.phase = "idle";
+    setLog(`Press <span class="kbd">Space</span> to lunge. If AI commits, parry <span class="kbd">F</span> then riposte <span class="kbd">Space</span>.`, "neutral");
+    setMode("Ready");
+    resetRound("");
+  }
+
+  function endGame(){
+    state.phase = "gameover";
+    setMode("Game Over");
+    const win = state.pScore > state.aScore;
+    setLog(
+      win
+        ? `🏆 You win ${state.pScore}-${state.aScore}. Reset to play again.`
+        : `💀 AI wins ${state.aScore}-${state.pScore}. Reset to run it back.`,
+      win ? "good" : "bad"
+    );
+  }
+
+  function scorePoint(who){
+    if (who === "player") {
+      state.pScore++;
+      state.streak++;
+    } else {
+      state.aScore++;
+      state.streak = 0;
+    }
+    pScoreEl.textContent = String(state.pScore);
+    aScoreEl.textContent = String(state.aScore);
+    streakLabel.textContent = String(state.streak);
+
+    if (state.pScore >= 5 || state.aScore >= 5) endGame();
+    else resetRound("");
+  }
+
+  /*** Mechanics ***/
+  function onParry(){
+    if (state.phase === "ai_attack" || state.phase === "parry_window") {
+      const now = performance.now();
+      state.parryPressedAt = now;
+
+      if (now <= state.parryDeadline) {
+        state.parryArmed = true;
+        state.phase = "riposte_window";
+        state.riposteDeadline = now + 750; // quick riposte window
+        setMode("Riposte!");
+        setLog(`Nice parry. Now riposte with <span class="kbd">Space</span>!`, "good");
+        state.pArm = 1;
+      } else {
+        // late parry
+        state.phase = "resolve";
+        setMode("Hit");
+        setLog(`Too late — Red hits.`, "bad");
+        state.aLunge = 1;
+        setTimeout(() => scorePoint("ai"), 450);
+      }
+    } else {
+      // parry at wrong time
+      setLog(`Parry only when Red commits.`, "warn");
+    }
+  }
+
+  function onLunge(){
+    if (state.phase === "gameover") return;
+
+    const now = performance.now();
+    state.lungePressedAt = now;
+
+    // If we have a successful parry, lunge becomes riposte
+    if (state.phase === "riposte_window") {
+      if (now <= state.riposteDeadline) {
+        state.phase = "resolve";
+        setMode("Touch!");
+        setLog(`Clean riposte — touch!`, "good");
+        state.pLunge = 1;
+        setTimeout(() => scorePoint("player"), 450);
+      } else {
+        state.phase = "resolve";
+        setMode("Missed");
+        setLog(`Riposte window missed — Red recovers.`, "bad");
+        state.aLunge = 0.6;
+        setTimeout(() => scorePoint("ai"), 450);
+      }
+      return;
+    }
+
+    // Otherwise, it's an initiating lunge
+    // If AI is about to commit very soon, lunging is risky
+    const dangerSoon = (state.aiCommitAt - now) < 220;
+
+    if (state.aiCommitAt !== Infinity && now >= state.aiCommitAt - 200 && now <= state.aiCommitAt + 120) {
+      // You lunged into their attack timing (countered)
+      state.phase = "resolve";
+      setMode("Countered");
+      setLog(`You lunged into Red’s attack — counter-touch.`, "bad");
+      state.pLunge = 1;
+      state.aLunge = 1;
+      setTimeout(() => scorePoint("ai"), 450);
+      return;
+    }
+
+    if (state.phase === "ai_attack" || state.phase === "parry_window") {
+      // If AI already attacking and you didn't parry, you likely get hit
+      state.phase = "resolve";
+      setMode("Hit");
+      setLog(`Red was already committing — you get hit.`, "bad");
+      state.pLunge = 1;
+      state.aLunge = 1;
+      setTimeout(() => scorePoint("ai"), 450);
+      return;
+    }
+
+    if (dangerSoon) {
+      // early lunge right before their commit -> tossup, slightly unfavorable
+      const win = Math.random() < 0.35;
+      state.phase = "resolve";
+      state.pLunge = 1;
+      state.aLunge = 0.85;
+      if (win) {
+        setMode("Touch!");
+        setLog(`Bold lunge — you sneak the touch.`, "good");
+        setTimeout(() => scorePoint("player"), 450);
+      } else {
+        setMode("Stopped");
+        setLog(`Red reads it — you get stopped.`, "bad");
+        setTimeout(() => scorePoint("ai"), 450);
+      }
+      return;
+    }
+
+    // Normal lunge: depends on if AI is idle
+    const win = Math.random() < 0.62; // player advantage if choosing moment
+    state.phase = "resolve";
+    state.pLunge = 1;
+    if (win) {
+      setMode("Touch!");
+      setLog(`Nice timing — touch!`, "good");
+      setTimeout(() => scorePoint("player"), 450);
+    } else {
+      setMode("Parried");
+      setLog(`Red parries your attack.`, "bad");
+      state.aArm = 1;
+      setTimeout(() => scorePoint("ai"), 450);
+    }
+  }
+
+  function tick(){
+    const now = performance.now();
+
+    if (state.phase !== "gameover") {
+      // warning cue
+      if (state.phase === "idle" && now >= state.warningAt) {
+        state.phase = "warning";
+        setMode("Watch");
+        setLog(`Red is twitchy…`, "warn");
+      }
+
+      // AI commits
+      if ((state.phase === "warning" || state.phase === "idle") && now >= state.aiCommitAt) {
+        state.phase = "ai_attack";
+        setMode("Parry!");
+        state.parryDeadline = now + 420; // parry window
+        setLog(`Red commits — parry with <span class="kbd">F</span>!`, "warn");
+      }
+
+      // Transition from ai_attack to parry_window for UI
+      if (state.phase === "ai_attack") {
+        state.aLunge = Math.min(1, state.aLunge + 0.06);
+        if (now > state.parryDeadline) {
+          // if no parry, AI hits
+          state.phase = "resolve";
+          setMode("Hit");
+          setLog(`No parry — Red hits.`, "bad");
+          setTimeout(() => scorePoint("ai"), 450);
+        } else {
+          state.phase = "parry_window";
+        }
+      }
+
+      // decay animations
+      state.pLunge *= 0.90;
+      state.aLunge *= 0.90;
+      state.pArm *= 0.88;
+      state.aArm *= 0.88;
+    }
+
+    draw();
+    requestAnimationFrame(tick);
+  }
+
+  /*** Drawing ***/
+  function draw(){
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0,0,w,h);
+
+    // piste line
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = "rgba(255,255,255,0.06)";
+    ctx.fillRect(0, h*0.62, w, 6);
+
+    // center marks
+    ctx.fillStyle = "rgba(255,255,255,0.08)";
+    ctx.fillRect(w/2 - 2, h*0.52, 4, h*0.24);
+
+    // fighters
+    const baseY = h*0.62;
+    const pX = state.pX + state.pLunge * 90;
+    const aX = state.aX - state.aLunge * 90;
+
+    // player (blue)
+    drawFencer(pX, baseY, 1, "rgba(38,186,215,0.95)", state.pArm);
+
+    // AI (red)
+    drawFencer(aX, baseY, -1, "rgba(255,77,109,0.90)", state.aArm);
+
+    // blades
+    drawBlade(pX, baseY, 1, state.pArm, "rgba(38,186,215,0.8)");
+    drawBlade(aX, baseY, -1, state.aArm, "rgba(255,77,109,0.75)");
+
+    // hit spark
+    if (state.phase === "resolve") {
+      // small sparkle at middle
+      ctx.globalAlpha = 0.35;
+      ctx.beginPath();
+      ctx.arc(w/2, baseY-55, 28, 0, Math.PI*2);
+      ctx.fillStyle = "rgba(255,255,255,0.25)";
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    // instructions overlay
+    ctx.globalAlpha = 0.9;
+    ctx.fillStyle = "rgba(0,0,0,0.25)";
+    ctx.fillRect(18, 18, 520, 90);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = "rgba(255,255,255,0.92)";
+    ctx.font = "28px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText("Space: Lunge / Riposte    F: Parry", 36, 58);
+    ctx.fillStyle = "rgba(255,255,255,0.72)";
+    ctx.font = "20px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText("First to 5. Parry when Red commits, then riposte.", 36, 90);
+  }
+
+  function drawFencer(x, y, dir, color, arm){
+    // body
+    ctx.save();
+    ctx.translate(x, y);
+
+    // feet
+    ctx.fillStyle = "rgba(255,255,255,0.18)";
+    ctx.fillRect(-40*dir, -6, 40*dir, 10);
+    ctx.fillRect(10*dir, -6, 42*dir, 10);
+
+    // legs
+    ctx.strokeStyle = "rgba(255,255,255,0.20)";
+    ctx.lineWidth = 10;
+    ctx.beginPath();
+    ctx.moveTo(-10*dir, -6);
+    ctx.lineTo(-22*dir, -48);
+    ctx.lineTo(-4*dir, -92);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(10*dir, -6);
+    ctx.lineTo(28*dir, -54);
+    ctx.lineTo(8*dir, -98);
+    ctx.stroke();
+
+    // torso
+    ctx.fillStyle = color;
+    roundRect(-26, -160, 52, 86, 18);
+    ctx.fill();
+
+    // mask/head
+    ctx.fillStyle = "rgba(255,255,255,0.85)";
+    ctx.beginPath();
+    ctx.arc(0, -182, 26, 0, Math.PI*2);
+    ctx.fill();
+    ctx.fillStyle = "rgba(0,0,0,0.45)";
+    ctx.beginPath();
+    ctx.arc(6*dir, -182, 16, -0.2, Math.PI*2-0.2);
+    ctx.fill();
+
+    // arm (weapon side)
+    ctx.strokeStyle = "rgba(255,255,255,0.72)";
+    ctx.lineWidth = 10;
+    ctx.lineCap = "round";
+
+    const armRaise = arm * 24; // up when parry
+    ctx.beginPath();
+    ctx.moveTo(12*dir, -140);
+    ctx.lineTo(48*dir, -132 - armRaise);
+    ctx.stroke();
+
+    // off arm
+    ctx.strokeStyle = "rgba(255,255,255,0.18)";
+    ctx.beginPath();
+    ctx.moveTo(-10*dir, -140);
+    ctx.lineTo(-42*dir, -122);
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  function drawBlade(x, y, dir, arm, bladeColor){
+    ctx.save();
+    ctx.translate(x, y);
+
+    const armRaise = arm * 24;
+    const x0 = 48*dir;
+    const y0 = -132 - armRaise;
+
+    ctx.strokeStyle = bladeColor;
+    ctx.lineWidth = 5;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x0 + 220*dir, y0 - 24);
+    ctx.stroke();
+
+    // tip
+    ctx.fillStyle = "rgba(255,255,255,0.85)";
+    ctx.beginPath();
+    ctx.arc(x0 + 220*dir, y0 - 24, 6, 0, Math.PI*2);
+    ctx.fill();
+
+    ctx.restore();
+  }
+
+  function roundRect(x,y,w,h,r){
+    const rr = Math.min(r, w/2, h/2);
+    ctx.beginPath();
+    ctx.moveTo(x+rr, y);
+    ctx.lineTo(x+w-rr, y);
+    ctx.quadraticCurveTo(x+w, y, x+w, y+rr);
+    ctx.lineTo(x+w, y+h-rr);
+    ctx.quadraticCurveTo(x+w, y+h, x+w-rr, y+h);
+    ctx.lineTo(x+rr, y+h);
+    ctx.quadraticCurveTo(x, y+h, x, y+h-rr);
+    ctx.lineTo(x, y+rr);
+    ctx.quadraticCurveTo(x, y, x+rr, y);
+    ctx.closePath();
+  }
+
+  function rand(min, max){ return Math.random()*(max-min)+min; }
+
+  /*** Events ***/
+  window.addEventListener("keydown", (e) => {
+    if (e.code === "Space") { e.preventDefault(); onLunge(); }
+    if (e.key.toLowerCase() === "f") { onParry(); }
+    if (e.key.toLowerCase() === "r") { hardReset(); }
+  });
+
+  btnLunge.addEventListener("click", onLunge);
+  btnParry.addEventListener("click", onParry);
+  btnReset.addEventListener("click", hardReset);
+
+  /*** Start ***/
+  hardReset();
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
