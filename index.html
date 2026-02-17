@@ -1301,7 +1301,7 @@
         S.phase="gameover";
         setMode("Game Over");
         const win = S.pScore > S.aScore;
-        setLog(win ? `🏆 You win ${S.pScore}-${S.aScore}.` : `💀 AI wins ${S.aScore}-${S.pScore}.`, win ? "good" : "bad");
+        setLog(win ? ` You win ${S.pScore}-${S.aScore}.` : ` AI wins ${S.aScore}-${S.pScore}.`, win ? "good" : "bad");
       }
 
       function scorePoint(who){
