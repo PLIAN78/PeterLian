@@ -313,8 +313,8 @@
     const win = state.pScore > state.aScore;
     setLog(
       win
-        ? `🏆 You win ${state.pScore}-${state.aScore}. Reset to play again.`
-        : `💀 AI wins ${state.aScore}-${state.pScore}. Reset to run it back.`,
+        ? ` You win ${state.pScore}-${state.aScore}. Reset to play again.`
+        : ` AI wins ${state.aScore}-${state.pScore}. Reset to run it back.`,
       win ? "good" : "bad"
     );
   }
