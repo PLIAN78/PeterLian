@@ -6,6 +6,7 @@
   <title>PeteTok — Peter Lian Portfolio</title>
   <meta name="description" content="Peter Lian's TikTok-inspired personal portfolio: projects, experience, startups, and contact." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="gym-mini-game.css" />
   <link rel="apple-touch-icon" sizes="180x180" href="public/external/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="public/external/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="public/external/favicon-16x16.png" />
@@ -45,6 +46,7 @@
     .wide-card{grid-column:span 2}.wide-card .video-info{right:90px}.wide-card .video-info h3{font-size:24px}
     .empty{grid-column:1/-1;padding:60px;text-align:center;color:#888;border:1px dashed #333;border-radius:12px}
     .contact-panel{margin-top:34px;background:#101010;border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;grid-template-columns:1fr 1.3fr;gap:28px}.contact-copy h2{font-size:28px}.contact-copy p{color:#aaa;margin-top:10px;line-height:1.6}.social-row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}.social-pill{padding:9px 12px;border:1px solid #3b3b3b;border-radius:7px}.social-pill:hover{border-color:#777}.contact-form{display:grid;gap:12px}.contact-form input,.contact-form textarea{width:100%;background:#202020;border:1px solid #373737;border-radius:7px;color:#fff;padding:12px;outline:0}.contact-form input:focus,.contact-form textarea:focus{border-color:#777}.contact-form button{justify-self:start;background:var(--pink);color:#fff;border:0;border-radius:7px;padding:11px 22px;font-weight:800;cursor:pointer}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
     .mobile-nav{display:none}
     @media(max-width:1100px){.video-grid{grid-template-columns:repeat(3,1fr)}.wide-card{grid-column:span 1}.profile-hero{grid-template-columns:auto 1fr}.profile-actions{grid-column:2}}
     @media(max-width:800px){:root{--sidebar:0px}.sidebar{display:none}.topbar{padding:0 12px}.brand{min-width:auto}.brand span{display:none}.top-actions{min-width:auto}.top-actions .hide-mobile{display:none}.searchbar{margin:0}.content{padding:12px 10px 90px}.video-grid{grid-template-columns:repeat(2,1fr);gap:9px}.video-card{min-height:310px}.profile-hero{grid-template-columns:84px 1fr;gap:14px}.profile-avatar{width:84px;height:84px}.profile-copy h1{font-size:25px}.stats{gap:12px;flex-wrap:wrap}.profile-actions{grid-column:1/-1}.contact-panel{grid-template-columns:1fr}.mobile-nav{position:fixed;display:flex;justify-content:space-around;align-items:center;bottom:0;left:0;right:0;height:62px;background:#080808;border-top:1px solid var(--line);z-index:60}.mobile-nav a{font-size:20px}.mobile-nav .create{width:42px;height:28px;border-radius:8px;background:linear-gradient(90deg,var(--cyan) 0 48%,var(--pink) 52%);display:grid;place-items:center}.mobile-nav .create i{background:#fff;color:#000;width:30px;height:24px;border-radius:6px;display:grid;place-items:center;font-size:14px}}
@@ -65,6 +67,7 @@
       <a class="nav-item" href="#projects" data-nav-filter="internship"><i class="fa-solid fa-building"></i>Internships</a>
       <a class="nav-item" href="#projects" data-nav-filter="experience"><i class="fa-solid fa-briefcase"></i>Experience</a>
       <a class="nav-item" href="#projects" data-nav-filter="hustle"><i class="fa-solid fa-rocket"></i>Hustles</a>
+      <a class="nav-item" href="#winter-arc"><i class="fa-solid fa-dumbbell"></i>Winter Arc</a>
       <a class="nav-item" href="#contact"><i class="fa-regular fa-paper-plane"></i>Contact</a>
     </nav>
     <div class="sidebar-divider"></div>
@@ -97,6 +100,54 @@
         <div class="profile-copy"><h1>Peter Lian <i class="fa-solid fa-circle-check" style="font-size:17px;color:#20d5ec"></i></h1><div class="handle">@peterlian.dev · Computer Science @ University of Waterloo</div><p class="bio">Fall 2026 software co-op at Caivan in Ottawa. I build full-stack products, AI/ML experiments, AR/XR experiences, and Web3 systems—and I also grow technical communities through BuildBane, Backboard.io, and Hack the Valley. Varsity fencer, entrepreneur, and hackathon builder.</p><div class="stats"><div class="stat"><strong>10+</strong><span>Projects</span></div><div class="stat"><strong>5+</strong><span>Teams & communities</span></div><div class="stat"><strong>4</strong><span>Focus areas</span></div><div class="stat"><strong>Fall ’26</strong><span>Caivan · Ottawa</span></div></div></div>
         <div class="profile-actions"><a class="follow-btn" href="#contact">Contact Me</a><a class="outline-btn" href="https://github.com/PLIAN78" target="_blank"><i class="fa-brands fa-github"></i></a><a class="outline-btn" href="https://www.linkedin.com/in/yishuolian/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></div>
       </section>
+      <button class="gym-launcher" type="button" data-gym-open aria-controls="winter-arc-drawer" aria-expanded="false" title="Open Peter's Winter Arc">
+        <i class="fa-solid fa-dumbbell"></i><span>Winter Arc</span><small>play</small>
+      </button>
+
+      <aside class="gym-drawer" id="winter-arc-drawer" aria-hidden="true" aria-labelledby="winterArcTitle">
+        <div class="gym-drawer-head">
+          <div class="gym-drawer-copy"><div class="gym-kicker">Interactive side quest</div><h2 id="winterArcTitle">Peter's Winter Arc</h2></div>
+          <div class="gym-mode bulk" data-gym-mode>BULK 🥩</div>
+          <div class="gym-window-actions">
+            <button class="gym-window-btn" type="button" data-gym-expand aria-label="Open full game view" title="Full play view"><i class="fa-solid fa-expand"></i></button>
+            <button class="gym-window-btn" type="button" data-gym-close aria-label="Close Winter Arc" title="Close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <div class="gym-card" id="winter-arc-game">
+          <div class="gym-compact-stats" aria-label="Current game stats">
+            <div class="gym-mini-stat"><span>LEVEL</span><strong data-gym-level>1</strong></div>
+            <div class="gym-mini-stat"><span>MUSCLE</span><strong data-gym-muscle>18</strong></div>
+            <div class="gym-mini-stat"><span>BELLY</span><strong data-gym-fat>4</strong></div>
+            <div class="gym-mini-stat"><span>FEEDS</span><strong class="tiny"><b data-gym-feed-count>0</b>/<b data-gym-feed-need>10</b></strong></div>
+          </div>
+          <div class="gym-layout">
+            <aside class="gym-panel gym-panel-left" aria-label="Game progress">
+              <div class="gym-panel-title">Progress</div>
+              <div><div class="gym-level-number">LEVEL <span data-gym-level>1</span></div><div class="gym-substat">GYM ARC <span data-gym-arc>1</span></div></div>
+              <div><div class="gym-progress"><span data-gym-progress></span></div><div class="gym-progress-copy"><span><b data-gym-feed-count>0</b> / <b data-gym-feed-need>10</b> feeds</span><span>next form</span></div></div>
+              <div class="gym-message" data-gym-message>Pick a food, then click the arena to feed Peter.</div>
+              <button class="gym-reset" type="button" data-gym-reset>Reset run</button>
+            </aside>
+            <div class="gym-arena" data-gym-arena role="button" tabindex="0" aria-label="Click or tap here to throw the selected food toward Peter">
+              <div class="gym-instruction">CLICK / TAP TO THROW</div>
+              <div class="gym-character-wrap"><img class="gym-character" data-gym-character src="public/gym/peter-stage-0.png" alt="Cartoon Peter showing the current gym progression stage"></div>
+              <div class="gym-projectiles" data-gym-projectiles aria-hidden="true"></div>
+              <div class="gym-prestige" data-gym-prestige><div class="gym-prestige-box"><h3>FINAL FORM UNLOCKED</h3><p>Winter Arc complete. Prestige and start the next gym arc.</p><button type="button" data-gym-prestige-button>Start Gym Arc 2 →</button></div></div>
+            </div>
+            <aside class="gym-panel gym-panel-right" aria-label="Character stats">
+              <div class="gym-stat-row"><div class="gym-stat-top"><span class="gym-stat-name">MUSCLE</span><span class="gym-stat-value" data-gym-muscle>18</span></div><div class="gym-meter gym-meter-muscle"><span data-gym-muscle-bar></span></div><div class="gym-label">GAINZ</div></div>
+              <div class="gym-stat-row"><div class="gym-stat-top"><span class="gym-stat-name">BELLY</span><span class="gym-stat-value" data-gym-fat>4</span></div><div class="gym-meter gym-meter-fat"><span data-gym-fat-bar></span></div><div class="gym-label" data-gym-fat-label>LEAN</div></div>
+              <div class="gym-selected"><div class="gym-panel-title">Selected food</div><strong data-gym-selected>🥤 Protein Shake</strong><small data-gym-selected-effect>+2 muscle · +1 bulk</small></div>
+            </aside>
+            <div class="gym-message" data-gym-message>Pick a food, then click the arena to feed Peter.</div>
+          </div>
+          <div class="gym-food-zone">
+            <div class="gym-food-zone-head"><span>Fuel</span><span>Unlocks as you level</span><button class="gym-reset" type="button" data-gym-reset style="display:none">Reset</button></div>
+            <div class="gym-food-bar" data-gym-foods aria-label="Select food"></div>
+          </div>
+          <div class="sr-only" data-gym-live aria-live="polite"></div>
+        </div>
+      </aside>
 
       <section id="projects"><div class="section-head"><h2>Featured posts</h2><span>Click any card to open the project</span></div><div class="video-grid" id="portfolioGrid"></div></section>
 
@@ -136,5 +187,6 @@
     document.getElementById('themePulse').addEventListener('click',()=>{document.documentElement.animate([{filter:'hue-rotate(0deg)'},{filter:'hue-rotate(25deg)'},{filter:'hue-rotate(0deg)'}],{duration:650})});
     render();
   </script>
+  <script src="gym-mini-game.js"></script>
 </body>
 </html>
