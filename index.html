@@ -171,7 +171,7 @@
 
   <script>
     const items = [
-      {title:'Caivan',subtitle:'Software Co-op · Fall 2026 · Ottawa',desc:'Designing and developing web apps, desktop apps, and plugins across the business value chain. The role focuses on diagnosing complex business-logic issues, collaborating with stakeholders, contributing to large shared software projects, maintaining applications, documenting requirements, and resolving bugs using .NET/C#, Node.js/TypeScript, Azure DevOps, Vercel, SQL, and PostgreSQL.',type:'internship',cats:['fullstack'],tags:['.NET','C#','Node.js','TypeScript','Azure DevOps','PostgreSQL'],href:'https://caivan.com/',img:'peterlian-card-images_1/Caivan.png',a:'#f4c542',b:'#1b2a41'},
+      {title:'Caivan / ABIC',key:'caivan',subtitle:'Software Co-op · Fall 2026 · Ottawa',desc:'Designing and developing web apps, desktop apps, and plugins across the business value chain. The role focuses on diagnosing complex business-logic issues, collaborating with stakeholders, contributing to large shared software projects, maintaining applications, documenting requirements, and resolving bugs using .NET/C#, Node.js/TypeScript, Azure DevOps, Vercel, SQL, and PostgreSQL.',type:'internship',cats:['fullstack'],tags:['.NET','C#','Node.js','TypeScript','Azure DevOps','PostgreSQL'],href:'https://abicbuilds.com/',img:'peterlian-card-images_1/Caivan.png',a:'#f4c542',b:'#1b2a41'},
       {title:'BuildBane',subtitle:'Software Engineering & Growth · Current',desc:'Shipping product features while also supporting growth, user acquisition, and the community around a platform that helps builders find collaborators and launch projects.',type:'experience',cats:['fullstack'],tags:['Next.js','GraphQL','Growth','Product'],href:'https://www.buildbane.com/',img:'peterlian-card-images_1/BB.png',a:'#25f4ee',b:'#174a5b'},
       {title:'Backboard.io',subtitle:'Campus Ambassador · University of Waterloo',desc:'Creating campus-focused content, representing Backboard.io at Waterloo, and organizing events that introduce students to the platform and its AI infrastructure.',type:'experience',cats:['fullstack'],tags:['Campus','Content','Events','AI'],href:'https://backboard.io/',img:'peterlian-card-images_1/backboard_io_logo.jpeg',a:'#8f6cff',b:'#17122e'},
       {title:'Hack the Valley',subtitle:'Sponsorship Coordinator · Current',desc:'Building sponsor relationships, coordinating outreach, and helping secure the partnerships and resources needed to deliver Hack the Valley.',type:'experience',cats:[],tags:['Sponsorship','Partnerships','Outreach','Hackathons'],href:'https://hackthevalley.io/',img:'peterlian-card-images_1/original.png',a:'#fe2c55',b:'#32121d'},
@@ -198,7 +198,7 @@
     let active='all';
     // Shared click counts, stored in the free Abacus counter API (one counter per card, keyed by title slug).
     const COUNTER_API='https://abacus.jasoncameron.dev',COUNTER_NS='peterlian-com';
-    const cardKey=x=>x.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    const cardKey=x=>x.key||x.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
     const clicks={};
     const fmtClicks=n=>n===undefined?'–':n>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,'')+'M':n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,'')+'K':String(n);
     function showClicks(key){grid.querySelectorAll(`[data-clicks="${key}"]`).forEach(el=>el.textContent=fmtClicks(clicks[key]))}
