@@ -118,7 +118,40 @@
   function resetGame(){Object.assign(state,{level:1,feeds:0,muscle:18,bodyFat:4,selectedFood:'protein',mode:'bulk',arc:1,complete:false,lastThrow:0});el.prestige.classList.remove('show');say('Pick a food, then click the arena to feed Peter.');render()}
   function prestige(){state.arc++;Object.assign(state,{level:1,feeds:0,muscle:24,bodyFat:4,selectedFood:'protein',mode:'bulk',complete:false,lastThrow:0});el.prestige.classList.remove('show');say(`GYM ARC ${state.arc}. Back to the bulk.`);render()}
 
-  launcher.addEventListener('click',()=>openGame(false)); el.close.addEventListener('click',closeGame); el.expand.addEventListener('click',toggleFull);
+  // Draggable launcher: drag anywhere on the button (grip icon signals it); a short drag threshold keeps plain clicks opening the game.
+  const POS_KEY='winterArcLauncherPos';
+  let drag=null, launcherDragged=false;
+  function placeLauncher(x,y){
+    const r=launcher.getBoundingClientRect();
+    x=Math.min(Math.max(8,x),window.innerWidth-r.width-8); y=Math.min(Math.max(8,y),window.innerHeight-r.height-8);
+    launcher.classList.add('dragged'); launcher.style.left=x+'px'; launcher.style.top=y+'px';
+    return {x,y};
+  }
+  try{const saved=JSON.parse(localStorage.getItem(POS_KEY));if(saved)placeLauncher(saved.x,saved.y)}catch(e){}
+  launcher.addEventListener('pointerdown',e=>{
+    if(e.button!==0)return;
+    const r=launcher.getBoundingClientRect();
+    drag={id:e.pointerId,sx:e.clientX,sy:e.clientY,ox:e.clientX-r.left,oy:e.clientY-r.top,moved:false};
+  });
+  launcher.addEventListener('pointermove',e=>{
+    if(!drag||e.pointerId!==drag.id)return;
+    if(!drag.moved&&Math.hypot(e.clientX-drag.sx,e.clientY-drag.sy)<5)return;
+    if(!drag.moved){drag.moved=true;launcher.setPointerCapture(e.pointerId);launcher.classList.add('dragging')}
+    placeLauncher(e.clientX-drag.ox,e.clientY-drag.oy);
+  });
+  function endDrag(e){
+    if(!drag||e.pointerId!==drag.id)return;
+    if(drag.moved){
+      launcherDragged=true; launcher.classList.remove('dragging');
+      const r=launcher.getBoundingClientRect();
+      try{localStorage.setItem(POS_KEY,JSON.stringify({x:r.left,y:r.top}))}catch(err){}
+    }
+    drag=null;
+  }
+  launcher.addEventListener('pointerup',endDrag); launcher.addEventListener('pointercancel',endDrag);
+  window.addEventListener('resize',()=>{if(launcher.classList.contains('dragged')){const r=launcher.getBoundingClientRect();placeLauncher(r.left,r.top)}});
+
+  launcher.addEventListener('click',()=>{if(launcherDragged){launcherDragged=false;return}openGame(false)}); el.close.addEventListener('click',closeGame); el.expand.addEventListener('click',toggleFull);
   document.querySelectorAll('a[href="#winter-arc"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openGame(false)}));
   el.arena.addEventListener('pointerdown',throwFood); el.arena.addEventListener('keydown',e=>{if(e.key!=='Enter'&&e.key!==' ')return;e.preventDefault();const r=el.arena.getBoundingClientRect();throwFood({clientX:r.left+r.width/2})});
   el.reset.addEventListener('click',resetGame); el.prestigeButton.addEventListener('click',prestige);
